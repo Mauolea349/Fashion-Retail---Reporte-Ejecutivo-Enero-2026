@@ -1,0 +1,10 @@
+{
+  "mcpServers": {
+    "powerbi-modeling": {
+      "command": "node",
+      "args": [
+        "${extensionPath}/analysis-services.powerbi-modeling-mcp/out/server.js"
+      ]
+    }
+  }
+}

@@ -1,0 +1,2255 @@
+2026-02-04 14:54:22,951 - INFO - 
+############################################################
+2026-02-04 14:54:22,951 - INFO - DATA CLEANING PIPELINE - ETL + PARETO UNIFICADO
+2026-02-04 14:54:22,951 - INFO - ############################################################
+2026-02-04 14:54:22,951 - INFO - 
+============================================================
+2026-02-04 14:54:22,951 - INFO - FASE 1: EXTRACCION (Smart Header Detection)
+2026-02-04 14:54:22,952 - INFO - ============================================================
+2026-02-04 14:54:22,952 - INFO - Archivos encontrados: 9
+2026-02-04 14:54:22,952 - INFO - 
+  Procesando: online.csv
+2026-02-04 14:54:22,957 - INFO -     OK: header=1, encoding=utf-8
+2026-02-04 14:54:22,958 - INFO -     ONLINE: 199 filas, 9 columnas
+2026-02-04 14:54:22,958 - INFO - 
+  Procesando: sucursal_1.csv
+2026-02-04 14:54:22,961 - INFO -     OK: header=1, encoding=utf-8
+2026-02-04 14:54:22,961 - INFO -     SUCURSAL_1: 324 filas, 9 columnas
+2026-02-04 14:54:22,961 - INFO - 
+  Procesando: sucursal_2.csv
+2026-02-04 14:54:22,964 - INFO -     OK: header=1, encoding=utf-8
+2026-02-04 14:54:22,964 - INFO -     SUCURSAL_2: 314 filas, 9 columnas
+2026-02-04 14:54:22,964 - INFO - 
+  Procesando: sucursal_3.csv
+2026-02-04 14:54:22,966 - INFO -     OK: header=1, encoding=utf-8
+2026-02-04 14:54:22,967 - INFO -     SUCURSAL_3: 331 filas, 9 columnas
+2026-02-04 14:54:22,967 - INFO - 
+  Procesando: sucursal_4.csv
+2026-02-04 14:54:22,969 - INFO -     OK: header=1, encoding=utf-8
+2026-02-04 14:54:22,969 - INFO -     SUCURSAL_4: 221 filas, 9 columnas
+2026-02-04 14:54:22,969 - INFO - 
+  Procesando: sucursal_5.csv
+2026-02-04 14:54:22,971 - INFO -     OK: header=1, encoding=utf-8
+2026-02-04 14:54:22,972 - INFO -     SUCURSAL_5: 297 filas, 9 columnas
+2026-02-04 14:54:22,972 - INFO - 
+  Procesando: sucursal_6.csv
+2026-02-04 14:54:22,975 - INFO -     OK: header=1, encoding=utf-8
+2026-02-04 14:54:22,975 - INFO -     SUCURSAL_6: 337 filas, 9 columnas
+2026-02-04 14:54:22,975 - INFO - 
+  Procesando: sucursal_7.csv
+2026-02-04 14:54:22,977 - INFO -     OK: header=1, encoding=utf-8
+2026-02-04 14:54:22,977 - INFO -     SUCURSAL_7: 281 filas, 9 columnas
+2026-02-04 14:54:22,977 - INFO - 
+  Procesando: sucursal_8.csv
+2026-02-04 14:54:22,980 - INFO -     OK: header=1, encoding=utf-8
+2026-02-04 14:54:22,980 - INFO -     SUCURSAL_8: 471 filas, 9 columnas
+2026-02-04 14:54:22,981 - INFO - 
+Total extraido: 2775 filas
+2026-02-04 14:54:22,981 - INFO - 
+============================================================
+2026-02-04 14:54:22,981 - INFO - FASE 2: NORMALIZACION DE COLUMNAS (Fuzzy Detection)
+2026-02-04 14:54:22,981 - INFO - ============================================================
+2026-02-04 14:54:22,981 - INFO -   Columnas originales: ['        Artículo           ', '   Talle   ', '   Color   ', '              Descripción                      ', 'Cantidad', '  Precio   ', '  Total Precio  ', 'Stock Actual', 'Sucursal']
+2026-02-04 14:54:22,982 - INFO -   Mapeo aplicado: {'Articulo': 'Articulo', 'Descripcion': 'Descripcion', 'Cantidad': 'Cantidad', 'Precio': 'Precio', 'Total Precio': 'Total_precio'}
+2026-02-04 14:54:22,982 - INFO -   Columnas normalizadas: ['Articulo', 'Talle', 'Color', 'Descripcion', 'Cantidad', 'Precio', 'Total_precio', 'Stock Actual', 'Sucursal']
+2026-02-04 14:54:22,982 - INFO -   OK: Columna 'Articulo' verificada correctamente
+2026-02-04 14:54:22,982 - INFO - 
+============================================================
+2026-02-04 14:54:22,982 - INFO - FASE 3: LIMPIEZA (Deteccion Flexible)
+2026-02-04 14:54:22,982 - INFO - ============================================================
+2026-02-04 14:54:22,982 - INFO - Columnas disponibles: ['Articulo', 'Talle', 'Color', 'Descripcion', 'Cantidad', 'Precio', 'Total_precio', 'Stock Actual', 'Sucursal']
+2026-02-04 14:54:22,982 - INFO -   OK Columna de total detectada como: 'Total_precio'
+2026-02-04 14:54:22,983 - INFO -   OK Columna 'Cantidad' convertida a numerico
+2026-02-04 14:54:22,983 - INFO -   OK Columna 'Precio' convertida a numerico
+2026-02-04 14:54:22,985 - INFO -   Filas con Articulo vacio eliminadas: 8
+2026-02-04 14:54:22,995 - WARNING -   FILTRO PARETO: 9 filas de TOTAL/SUBTOTAL eliminadas
+2026-02-04 14:54:22,995 - INFO -   (Estas filas distorsionaban el calculo de Pareto)
+2026-02-04 14:54:22,995 - INFO - 
+Total limpio: 2758 filas
+2026-02-04 14:54:22,996 - INFO - Columnas finales: ['Articulo', 'Talle', 'Color', 'Descripcion', 'Cantidad', 'Precio', 'Total_precio', 'Stock Actual', 'Sucursal', 'Venta_Neta']
+2026-02-04 14:54:22,996 - INFO - 
+============================================================
+2026-02-04 14:54:22,996 - INFO - FASE 4: TRANSFORMACION - ANALISIS PARETO (ABC)
+2026-02-04 14:54:22,996 - INFO - ============================================================
+2026-02-04 14:54:22,996 - INFO -   Columnas disponibles para Pareto: ['Articulo', 'Talle', 'Color', 'Descripcion', 'Cantidad', 'Precio', 'Total_precio', 'Stock Actual', 'Sucursal', 'Venta_Neta']
+2026-02-04 14:54:22,996 - INFO -   Agregacion configurada: ['Venta_Neta', 'Descripcion', 'Cantidad', 'Sucursal']
+2026-02-04 14:54:23,011 - WARNING -   34 articulos con venta negativa (devoluciones netas)
+2026-02-04 14:54:23,014 - INFO - 
+  RESUMEN PARETO ABC:
+2026-02-04 14:54:23,014 - INFO -   ==================================================
+2026-02-04 14:54:23,014 - INFO -   Clase A (80%):     92 articulos (20.3% del catalogo)
+2026-02-04 14:54:23,014 - INFO -   Clase B (95%):    147 articulos (32.4% del catalogo)
+2026-02-04 14:54:23,014 - INFO -   Clase C (100%):   215 articulos (47.4% del catalogo)
+2026-02-04 14:54:23,014 - INFO -   ==================================================
+2026-02-04 14:54:23,014 - INFO -   Total articulos: 454
+2026-02-04 14:54:23,014 - INFO -   Facturacion total: $309,550,458.08
+2026-02-04 14:54:23,015 - INFO - 
+  TOP 5 ARTICULOS:
+2026-02-04 14:54:23,015 - INFO -     #1: 26110 - $16,307,335.00 (5.27%)
+2026-02-04 14:54:23,015 - INFO -     #2: 26419 - $8,546,480.00 (2.76%)
+2026-02-04 14:54:23,015 - INFO -     #3: 26209 - $7,735,641.00 (2.50%)
+2026-02-04 14:54:23,015 - INFO -     #4: 26207 - $7,283,656.00 (2.35%)
+2026-02-04 14:54:23,015 - INFO -     #5: 26203 - $6,622,560.00 (2.14%)
+2026-02-04 14:54:23,015 - INFO - 
+============================================================
+2026-02-04 14:54:23,015 - INFO - FASE 5: CARGA
+2026-02-04 14:54:23,015 - INFO - ============================================================
+2026-02-04 14:54:23,020 - INFO -   Archivo exportado: C:\Users\mauri\OneDrive\Escritorio pc anterior\Analisis ventas mamy blue ENERO\data\processed\ventas_final_procesadas.csv
+2026-02-04 14:54:23,020 - INFO -   Filas: 454
+2026-02-04 14:54:23,020 - INFO -   Columnas: ['Ranking', 'Articulo', 'Descripcion', 'Cantidad', 'Venta_Neta', 'Porcentaje', 'Porcentaje_Acumulado', 'Clasificacion_ABC', 'Sucursales']
+2026-02-04 14:54:23,020 - INFO - 
+############################################################
+2026-02-04 14:54:23,020 - INFO - PIPELINE COMPLETADO EXITOSAMENTE
+2026-02-04 14:54:23,020 - INFO - Archivo final: ventas_final_procesadas.csv
+2026-02-04 14:54:23,020 - INFO - ############################################################
+2026-02-04 14:54:30,826 - INFO - 
+############################################################
+2026-02-04 14:54:30,826 - INFO - DATA CLEANING PIPELINE - ETL + PARETO UNIFICADO
+2026-02-04 14:54:30,827 - INFO - ############################################################
+2026-02-04 14:54:30,827 - INFO - 
+============================================================
+2026-02-04 14:54:30,827 - INFO - FASE 1: EXTRACCION (Smart Header Detection)
+2026-02-04 14:54:30,827 - INFO - ============================================================
+2026-02-04 14:54:30,828 - INFO - Archivos encontrados: 9
+2026-02-04 14:54:30,828 - INFO - 
+  Procesando: online.csv
+2026-02-04 14:54:30,832 - INFO -     OK: header=1, encoding=utf-8
+2026-02-04 14:54:30,832 - INFO -     ONLINE: 199 filas, 9 columnas
+2026-02-04 14:54:30,833 - INFO - 
+  Procesando: sucursal_1.csv
+2026-02-04 14:54:30,835 - INFO -     OK: header=1, encoding=utf-8
+2026-02-04 14:54:30,836 - INFO -     SUCURSAL_1: 324 filas, 9 columnas
+2026-02-04 14:54:30,836 - INFO - 
+  Procesando: sucursal_2.csv
+2026-02-04 14:54:30,839 - INFO -     OK: header=1, encoding=utf-8
+2026-02-04 14:54:30,839 - INFO -     SUCURSAL_2: 314 filas, 9 columnas
+2026-02-04 14:54:30,839 - INFO - 
+  Procesando: sucursal_3.csv
+2026-02-04 14:54:30,843 - INFO -     OK: header=1, encoding=utf-8
+2026-02-04 14:54:30,843 - INFO -     SUCURSAL_3: 331 filas, 9 columnas
+2026-02-04 14:54:30,843 - INFO - 
+  Procesando: sucursal_4.csv
+2026-02-04 14:54:30,845 - INFO -     OK: header=1, encoding=utf-8
+2026-02-04 14:54:30,846 - INFO -     SUCURSAL_4: 221 filas, 9 columnas
+2026-02-04 14:54:30,846 - INFO - 
+  Procesando: sucursal_5.csv
+2026-02-04 14:54:30,848 - INFO -     OK: header=1, encoding=utf-8
+2026-02-04 14:54:30,848 - INFO -     SUCURSAL_5: 297 filas, 9 columnas
+2026-02-04 14:54:30,849 - INFO - 
+  Procesando: sucursal_6.csv
+2026-02-04 14:54:30,851 - INFO -     OK: header=1, encoding=utf-8
+2026-02-04 14:54:30,851 - INFO -     SUCURSAL_6: 337 filas, 9 columnas
+2026-02-04 14:54:30,851 - INFO - 
+  Procesando: sucursal_7.csv
+2026-02-04 14:54:30,854 - INFO -     OK: header=1, encoding=utf-8
+2026-02-04 14:54:30,854 - INFO -     SUCURSAL_7: 281 filas, 9 columnas
+2026-02-04 14:54:30,854 - INFO - 
+  Procesando: sucursal_8.csv
+2026-02-04 14:54:30,857 - INFO -     OK: header=1, encoding=utf-8
+2026-02-04 14:54:30,857 - INFO -     SUCURSAL_8: 471 filas, 9 columnas
+2026-02-04 14:54:30,859 - INFO - 
+Total extraido: 2775 filas
+2026-02-04 14:54:30,859 - INFO - 
+============================================================
+2026-02-04 14:54:30,859 - INFO - FASE 2: NORMALIZACION DE COLUMNAS (Fuzzy Detection)
+2026-02-04 14:54:30,859 - INFO - ============================================================
+2026-02-04 14:54:30,859 - INFO -   Columnas originales: ['        Artículo           ', '   Talle   ', '   Color   ', '              Descripción                      ', 'Cantidad', '  Precio   ', '  Total Precio  ', 'Stock Actual', 'Sucursal']
+2026-02-04 14:54:30,860 - INFO -   Mapeo aplicado: {'Articulo': 'Articulo', 'Descripcion': 'Descripcion', 'Cantidad': 'Cantidad', 'Precio': 'Precio', 'Total Precio': 'Total_precio'}
+2026-02-04 14:54:30,860 - INFO -   Columnas normalizadas: ['Articulo', 'Talle', 'Color', 'Descripcion', 'Cantidad', 'Precio', 'Total_precio', 'Stock Actual', 'Sucursal']
+2026-02-04 14:54:30,860 - INFO -   OK: Columna 'Articulo' verificada correctamente
+2026-02-04 14:54:30,860 - INFO - 
+============================================================
+2026-02-04 14:54:30,860 - INFO - FASE 3: LIMPIEZA (Deteccion Flexible)
+2026-02-04 14:54:30,860 - INFO - ============================================================
+2026-02-04 14:54:30,860 - INFO - Columnas disponibles: ['Articulo', 'Talle', 'Color', 'Descripcion', 'Cantidad', 'Precio', 'Total_precio', 'Stock Actual', 'Sucursal']
+2026-02-04 14:54:30,861 - INFO -   OK Columna de total detectada como: 'Total_precio'
+2026-02-04 14:54:30,861 - INFO -   OK Columna 'Cantidad' convertida a numerico
+2026-02-04 14:54:30,861 - INFO -   OK Columna 'Precio' convertida a numerico
+2026-02-04 14:54:30,864 - INFO -   Filas con Articulo vacio eliminadas: 8
+2026-02-04 14:54:30,877 - WARNING -   FILTRO PARETO: 9 filas de TOTAL/SUBTOTAL eliminadas
+2026-02-04 14:54:30,877 - INFO -   (Estas filas distorsionaban el calculo de Pareto)
+2026-02-04 14:54:30,877 - INFO - 
+Total limpio: 2758 filas
+2026-02-04 14:54:30,877 - INFO - Columnas finales: ['Articulo', 'Talle', 'Color', 'Descripcion', 'Cantidad', 'Precio', 'Total_precio', 'Stock Actual', 'Sucursal', 'Venta_Neta']
+2026-02-04 14:54:30,878 - INFO - 
+============================================================
+2026-02-04 14:54:30,878 - INFO - FASE 4: TRANSFORMACION - ANALISIS PARETO (ABC)
+2026-02-04 14:54:30,878 - INFO - ============================================================
+2026-02-04 14:54:30,878 - INFO -   Columnas disponibles para Pareto: ['Articulo', 'Talle', 'Color', 'Descripcion', 'Cantidad', 'Precio', 'Total_precio', 'Stock Actual', 'Sucursal', 'Venta_Neta']
+2026-02-04 14:54:30,878 - INFO -   Agregacion configurada: ['Venta_Neta', 'Descripcion', 'Cantidad', 'Sucursal']
+2026-02-04 14:54:30,896 - WARNING -   34 articulos con venta negativa (devoluciones netas)
+2026-02-04 14:54:30,900 - INFO - 
+  RESUMEN PARETO ABC:
+2026-02-04 14:54:30,900 - INFO -   ==================================================
+2026-02-04 14:54:30,900 - INFO -   Clase A (80%):     92 articulos (20.3% del catalogo)
+2026-02-04 14:54:30,900 - INFO -   Clase B (95%):    147 articulos (32.4% del catalogo)
+2026-02-04 14:54:30,900 - INFO -   Clase C (100%):   215 articulos (47.4% del catalogo)
+2026-02-04 14:54:30,900 - INFO -   ==================================================
+2026-02-04 14:54:30,900 - INFO -   Total articulos: 454
+2026-02-04 14:54:30,900 - INFO -   Facturacion total: $309,550,458.08
+2026-02-04 14:54:30,900 - INFO - 
+  TOP 5 ARTICULOS:
+2026-02-04 14:54:30,900 - INFO -     #1: 26110 - $16,307,335.00 (5.27%)
+2026-02-04 14:54:30,900 - INFO -     #2: 26419 - $8,546,480.00 (2.76%)
+2026-02-04 14:54:30,900 - INFO -     #3: 26209 - $7,735,641.00 (2.50%)
+2026-02-04 14:54:30,901 - INFO -     #4: 26207 - $7,283,656.00 (2.35%)
+2026-02-04 14:54:30,901 - INFO -     #5: 26203 - $6,622,560.00 (2.14%)
+2026-02-04 14:54:30,901 - INFO - 
+============================================================
+2026-02-04 14:54:30,901 - INFO - FASE 5: CARGA
+2026-02-04 14:54:30,901 - INFO - ============================================================
+2026-02-04 14:54:30,906 - INFO -   Archivo exportado: C:\Users\mauri\OneDrive\Escritorio pc anterior\Analisis ventas mamy blue ENERO\data\processed\ventas_final_procesadas.csv
+2026-02-04 14:54:30,906 - INFO -   Filas: 454
+2026-02-04 14:54:30,907 - INFO -   Columnas: ['Ranking', 'Articulo', 'Descripcion', 'Cantidad', 'Venta_Neta', 'Porcentaje', 'Porcentaje_Acumulado', 'Clasificacion_ABC', 'Sucursales']
+2026-02-04 14:54:30,907 - INFO - 
+############################################################
+2026-02-04 14:54:30,907 - INFO - PIPELINE COMPLETADO EXITOSAMENTE
+2026-02-04 14:54:30,907 - INFO - Archivo final: ventas_final_procesadas.csv
+2026-02-04 14:54:30,907 - INFO - ############################################################
+2026-02-04 14:54:41,145 - INFO - 
+############################################################
+2026-02-04 14:54:41,146 - INFO - DATA CLEANING PIPELINE - ETL + PARETO UNIFICADO
+2026-02-04 14:54:41,146 - INFO - ############################################################
+2026-02-04 14:54:41,146 - INFO - 
+============================================================
+2026-02-04 14:54:41,146 - INFO - FASE 1: EXTRACCION (Smart Header Detection)
+2026-02-04 14:54:41,146 - INFO - ============================================================
+2026-02-04 14:54:41,147 - INFO - Archivos encontrados: 9
+2026-02-04 14:54:41,147 - INFO - 
+  Procesando: online.csv
+2026-02-04 14:54:41,151 - INFO -     OK: header=1, encoding=utf-8
+2026-02-04 14:54:41,151 - INFO -     ONLINE: 199 filas, 9 columnas
+2026-02-04 14:54:41,152 - INFO - 
+  Procesando: sucursal_1.csv
+2026-02-04 14:54:41,154 - INFO -     OK: header=1, encoding=utf-8
+2026-02-04 14:54:41,154 - INFO -     SUCURSAL_1: 324 filas, 9 columnas
+2026-02-04 14:54:41,155 - INFO - 
+  Procesando: sucursal_2.csv
+2026-02-04 14:54:41,157 - INFO -     OK: header=1, encoding=utf-8
+2026-02-04 14:54:41,157 - INFO -     SUCURSAL_2: 314 filas, 9 columnas
+2026-02-04 14:54:41,157 - INFO - 
+  Procesando: sucursal_3.csv
+2026-02-04 14:54:41,159 - INFO -     OK: header=1, encoding=utf-8
+2026-02-04 14:54:41,160 - INFO -     SUCURSAL_3: 331 filas, 9 columnas
+2026-02-04 14:54:41,160 - INFO - 
+  Procesando: sucursal_4.csv
+2026-02-04 14:54:41,162 - INFO -     OK: header=1, encoding=utf-8
+2026-02-04 14:54:41,162 - INFO -     SUCURSAL_4: 221 filas, 9 columnas
+2026-02-04 14:54:41,162 - INFO - 
+  Procesando: sucursal_5.csv
+2026-02-04 14:54:41,165 - INFO -     OK: header=1, encoding=utf-8
+2026-02-04 14:54:41,165 - INFO -     SUCURSAL_5: 297 filas, 9 columnas
+2026-02-04 14:54:41,165 - INFO - 
+  Procesando: sucursal_6.csv
+2026-02-04 14:54:41,167 - INFO -     OK: header=1, encoding=utf-8
+2026-02-04 14:54:41,167 - INFO -     SUCURSAL_6: 337 filas, 9 columnas
+2026-02-04 14:54:41,167 - INFO - 
+  Procesando: sucursal_7.csv
+2026-02-04 14:54:41,169 - INFO -     OK: header=1, encoding=utf-8
+2026-02-04 14:54:41,170 - INFO -     SUCURSAL_7: 281 filas, 9 columnas
+2026-02-04 14:54:41,170 - INFO - 
+  Procesando: sucursal_8.csv
+2026-02-04 14:54:41,172 - INFO -     OK: header=1, encoding=utf-8
+2026-02-04 14:54:41,173 - INFO -     SUCURSAL_8: 471 filas, 9 columnas
+2026-02-04 14:54:41,174 - INFO - 
+Total extraido: 2775 filas
+2026-02-04 14:54:41,174 - INFO - 
+============================================================
+2026-02-04 14:54:41,174 - INFO - FASE 2: NORMALIZACION DE COLUMNAS (Fuzzy Detection)
+2026-02-04 14:54:41,174 - INFO - ============================================================
+2026-02-04 14:54:41,174 - INFO -   Columnas originales: ['        Artículo           ', '   Talle   ', '   Color   ', '              Descripción                      ', 'Cantidad', '  Precio   ', '  Total Precio  ', 'Stock Actual', 'Sucursal']
+2026-02-04 14:54:41,175 - INFO -   Mapeo aplicado: {'Articulo': 'Articulo', 'Descripcion': 'Descripcion', 'Cantidad': 'Cantidad', 'Precio': 'Precio', 'Total Precio': 'Total_precio'}
+2026-02-04 14:54:41,175 - INFO -   Columnas normalizadas: ['Articulo', 'Talle', 'Color', 'Descripcion', 'Cantidad', 'Precio', 'Total_precio', 'Stock Actual', 'Sucursal']
+2026-02-04 14:54:41,175 - INFO -   OK: Columna 'Articulo' verificada correctamente
+2026-02-04 14:54:41,175 - INFO - 
+============================================================
+2026-02-04 14:54:41,175 - INFO - FASE 3: LIMPIEZA (Deteccion Flexible)
+2026-02-04 14:54:41,175 - INFO - ============================================================
+2026-02-04 14:54:41,175 - INFO - Columnas disponibles: ['Articulo', 'Talle', 'Color', 'Descripcion', 'Cantidad', 'Precio', 'Total_precio', 'Stock Actual', 'Sucursal']
+2026-02-04 14:54:41,176 - INFO -   OK Columna de total detectada como: 'Total_precio'
+2026-02-04 14:54:41,176 - INFO -   OK Columna 'Cantidad' convertida a numerico
+2026-02-04 14:54:41,176 - INFO -   OK Columna 'Precio' convertida a numerico
+2026-02-04 14:54:41,179 - INFO -   Filas con Articulo vacio eliminadas: 8
+2026-02-04 14:54:41,188 - WARNING -   FILTRO PARETO: 9 filas de TOTAL/SUBTOTAL eliminadas
+2026-02-04 14:54:41,188 - INFO -   (Estas filas distorsionaban el calculo de Pareto)
+2026-02-04 14:54:41,188 - INFO - 
+Total limpio: 2758 filas
+2026-02-04 14:54:41,188 - INFO - Columnas finales: ['Articulo', 'Talle', 'Color', 'Descripcion', 'Cantidad', 'Precio', 'Total_precio', 'Stock Actual', 'Sucursal', 'Venta_Neta']
+2026-02-04 14:54:41,188 - INFO - 
+============================================================
+2026-02-04 14:54:41,189 - INFO - FASE 4: TRANSFORMACION - ANALISIS PARETO (ABC)
+2026-02-04 14:54:41,189 - INFO - ============================================================
+2026-02-04 14:54:41,189 - INFO -   Columnas disponibles para Pareto: ['Articulo', 'Talle', 'Color', 'Descripcion', 'Cantidad', 'Precio', 'Total_precio', 'Stock Actual', 'Sucursal', 'Venta_Neta']
+2026-02-04 14:54:41,189 - INFO -   Agregacion configurada: ['Venta_Neta', 'Descripcion', 'Cantidad', 'Sucursal']
+2026-02-04 14:54:41,203 - WARNING -   34 articulos con venta negativa (devoluciones netas)
+2026-02-04 14:54:41,207 - INFO - 
+  RESUMEN PARETO ABC:
+2026-02-04 14:54:41,207 - INFO -   ==================================================
+2026-02-04 14:54:41,207 - INFO -   Clase A (80%):     92 articulos (20.3% del catalogo)
+2026-02-04 14:54:41,207 - INFO -   Clase B (95%):    147 articulos (32.4% del catalogo)
+2026-02-04 14:54:41,207 - INFO -   Clase C (100%):   215 articulos (47.4% del catalogo)
+2026-02-04 14:54:41,207 - INFO -   ==================================================
+2026-02-04 14:54:41,207 - INFO -   Total articulos: 454
+2026-02-04 14:54:41,207 - INFO -   Facturacion total: $309,550,458.08
+2026-02-04 14:54:41,207 - INFO - 
+  TOP 5 ARTICULOS:
+2026-02-04 14:54:41,207 - INFO -     #1: 26110 - $16,307,335.00 (5.27%)
+2026-02-04 14:54:41,208 - INFO -     #2: 26419 - $8,546,480.00 (2.76%)
+2026-02-04 14:54:41,208 - INFO -     #3: 26209 - $7,735,641.00 (2.50%)
+2026-02-04 14:54:41,208 - INFO -     #4: 26207 - $7,283,656.00 (2.35%)
+2026-02-04 14:54:41,208 - INFO -     #5: 26203 - $6,622,560.00 (2.14%)
+2026-02-04 14:54:41,208 - INFO - 
+============================================================
+2026-02-04 14:54:41,208 - INFO - FASE 5: CARGA
+2026-02-04 14:54:41,208 - INFO - ============================================================
+2026-02-04 14:54:41,213 - INFO -   Archivo exportado: C:\Users\mauri\OneDrive\Escritorio pc anterior\Analisis ventas mamy blue ENERO\data\processed\ventas_final_procesadas.csv
+2026-02-04 14:54:41,213 - INFO -   Filas: 454
+2026-02-04 14:54:41,213 - INFO -   Columnas: ['Ranking', 'Articulo', 'Descripcion', 'Cantidad', 'Venta_Neta', 'Porcentaje', 'Porcentaje_Acumulado', 'Clasificacion_ABC', 'Sucursales']
+2026-02-04 14:54:41,213 - INFO - 
+############################################################
+2026-02-04 14:54:41,213 - INFO - PIPELINE COMPLETADO EXITOSAMENTE
+2026-02-04 14:54:41,213 - INFO - Archivo final: ventas_final_procesadas.csv
+2026-02-04 14:54:41,213 - INFO - ############################################################
+2026-02-04 15:03:41,380 - INFO - 
+############################################################
+2026-02-04 15:03:41,381 - INFO - DATA CLEANING PIPELINE - ETL + PARETO UNIFICADO
+2026-02-04 15:03:41,381 - INFO - ############################################################
+2026-02-04 15:03:41,381 - INFO - 
+============================================================
+2026-02-04 15:03:41,381 - INFO - FASE 1: EXTRACCION (Smart Header Detection)
+2026-02-04 15:03:41,381 - INFO - ============================================================
+2026-02-04 15:03:41,382 - INFO - Archivos encontrados: 9
+2026-02-04 15:03:41,382 - INFO - 
+  Procesando: online.csv
+2026-02-04 15:03:41,386 - INFO -     OK: header=1, encoding=utf-8
+2026-02-04 15:03:41,387 - INFO -     ONLINE: 199 filas, 9 columnas
+2026-02-04 15:03:41,388 - INFO - 
+  Procesando: sucursal_1.csv
+2026-02-04 15:03:41,391 - INFO -     OK: header=1, encoding=utf-8
+2026-02-04 15:03:41,392 - INFO -     SUCURSAL_1: 324 filas, 9 columnas
+2026-02-04 15:03:41,392 - INFO - 
+  Procesando: sucursal_2.csv
+2026-02-04 15:03:41,396 - INFO -     OK: header=1, encoding=utf-8
+2026-02-04 15:03:41,397 - INFO -     SUCURSAL_2: 314 filas, 9 columnas
+2026-02-04 15:03:41,397 - INFO - 
+  Procesando: sucursal_3.csv
+2026-02-04 15:03:41,402 - INFO -     OK: header=1, encoding=utf-8
+2026-02-04 15:03:41,402 - INFO -     SUCURSAL_3: 331 filas, 9 columnas
+2026-02-04 15:03:41,403 - INFO - 
+  Procesando: sucursal_4.csv
+2026-02-04 15:03:41,406 - INFO -     OK: header=1, encoding=utf-8
+2026-02-04 15:03:41,407 - INFO -     SUCURSAL_4: 221 filas, 9 columnas
+2026-02-04 15:03:41,407 - INFO - 
+  Procesando: sucursal_5.csv
+2026-02-04 15:03:41,411 - INFO -     OK: header=1, encoding=utf-8
+2026-02-04 15:03:41,412 - INFO -     SUCURSAL_5: 297 filas, 9 columnas
+2026-02-04 15:03:41,412 - INFO - 
+  Procesando: sucursal_6.csv
+2026-02-04 15:03:41,416 - INFO -     OK: header=1, encoding=utf-8
+2026-02-04 15:03:41,417 - INFO -     SUCURSAL_6: 337 filas, 9 columnas
+2026-02-04 15:03:41,417 - INFO - 
+  Procesando: sucursal_7.csv
+2026-02-04 15:03:41,420 - INFO -     OK: header=1, encoding=utf-8
+2026-02-04 15:03:41,421 - INFO -     SUCURSAL_7: 281 filas, 9 columnas
+2026-02-04 15:03:41,421 - INFO - 
+  Procesando: sucursal_8.csv
+2026-02-04 15:03:41,425 - INFO -     OK: header=1, encoding=utf-8
+2026-02-04 15:03:41,426 - INFO -     SUCURSAL_8: 471 filas, 9 columnas
+2026-02-04 15:03:41,427 - INFO - 
+Total extraido: 2775 filas
+2026-02-04 15:03:41,428 - INFO - 
+============================================================
+2026-02-04 15:03:41,428 - INFO - FASE 2: NORMALIZACION DE COLUMNAS (Fuzzy Detection)
+2026-02-04 15:03:41,428 - INFO - ============================================================
+2026-02-04 15:03:41,429 - INFO -   Columnas originales: ['        Artículo           ', '   Talle   ', '   Color   ', '              Descripción                      ', 'Cantidad', '  Precio   ', '  Total Precio  ', 'Stock Actual', 'Sucursal']
+2026-02-04 15:03:41,430 - INFO -   Mapeo aplicado: {'Articulo': 'Articulo', 'Descripcion': 'Descripcion', 'Cantidad': 'Cantidad', 'Precio': 'Precio', 'Total Precio': 'Total_precio'}
+2026-02-04 15:03:41,431 - INFO -   Columnas normalizadas: ['Articulo', 'Talle', 'Color', 'Descripcion', 'Cantidad', 'Precio', 'Total_precio', 'Stock Actual', 'Sucursal']
+2026-02-04 15:03:41,431 - INFO -   OK: Columna 'Articulo' verificada correctamente
+2026-02-04 15:03:41,431 - INFO - 
+============================================================
+2026-02-04 15:03:41,431 - INFO - FASE 3: LIMPIEZA (Deteccion Flexible)
+2026-02-04 15:03:41,431 - INFO - ============================================================
+2026-02-04 15:03:41,431 - INFO - Columnas disponibles: ['Articulo', 'Talle', 'Color', 'Descripcion', 'Cantidad', 'Precio', 'Total_precio', 'Stock Actual', 'Sucursal']
+2026-02-04 15:03:41,432 - INFO -   OK Columna de total detectada como: 'Total_precio'
+2026-02-04 15:03:41,432 - INFO -   OK Columna 'Cantidad' convertida a numerico
+2026-02-04 15:03:41,433 - INFO -   OK Columna 'Precio' convertida a numerico
+2026-02-04 15:03:41,436 - INFO -   Filas con Articulo vacio eliminadas: 8
+2026-02-04 15:03:41,451 - WARNING -   FILTRO PARETO: 9 filas de TOTAL/SUBTOTAL eliminadas
+2026-02-04 15:03:41,451 - INFO -   (Estas filas distorsionaban el calculo de Pareto)
+2026-02-04 15:03:41,452 - INFO - 
+Total limpio: 2758 filas
+2026-02-04 15:03:41,452 - INFO - Columnas finales: ['Articulo', 'Talle', 'Color', 'Descripcion', 'Cantidad', 'Precio', 'Total_precio', 'Stock Actual', 'Sucursal', 'Venta_Neta']
+2026-02-04 15:03:41,452 - INFO - 
+============================================================
+2026-02-04 15:03:41,452 - INFO - FASE 4: TRANSFORMACION - ANALISIS PARETO (ABC)
+2026-02-04 15:03:41,452 - INFO - ============================================================
+2026-02-04 15:03:41,452 - INFO -   Columnas disponibles para Pareto: ['Articulo', 'Talle', 'Color', 'Descripcion', 'Cantidad', 'Precio', 'Total_precio', 'Stock Actual', 'Sucursal', 'Venta_Neta']
+2026-02-04 15:03:41,452 - INFO -   Agregacion configurada: ['Venta_Neta', 'Descripcion', 'Cantidad', 'Sucursal']
+2026-02-04 15:03:41,469 - WARNING -   34 articulos con venta negativa (devoluciones netas)
+2026-02-04 15:03:41,473 - INFO - 
+  RESUMEN PARETO ABC:
+2026-02-04 15:03:41,473 - INFO -   ==================================================
+2026-02-04 15:03:41,474 - INFO -   Clase A (80%):     92 articulos (20.3% del catalogo)
+2026-02-04 15:03:41,474 - INFO -   Clase B (95%):    147 articulos (32.4% del catalogo)
+2026-02-04 15:03:41,474 - INFO -   Clase C (100%):   215 articulos (47.4% del catalogo)
+2026-02-04 15:03:41,474 - INFO -   ==================================================
+2026-02-04 15:03:41,474 - INFO -   Total articulos: 454
+2026-02-04 15:03:41,474 - INFO -   Facturacion total: $309,550,458.08
+2026-02-04 15:03:41,474 - INFO - 
+  TOP 5 ARTICULOS:
+2026-02-04 15:03:41,475 - INFO -     #1: 26110 - $16,307,335.00 (5.27%)
+2026-02-04 15:03:41,475 - INFO -     #2: 26419 - $8,546,480.00 (2.76%)
+2026-02-04 15:03:41,475 - INFO -     #3: 26209 - $7,735,641.00 (2.50%)
+2026-02-04 15:03:41,475 - INFO -     #4: 26207 - $7,283,656.00 (2.35%)
+2026-02-04 15:03:41,475 - INFO -     #5: 26203 - $6,622,560.00 (2.14%)
+2026-02-04 15:03:41,476 - INFO - 
+============================================================
+2026-02-04 15:03:41,476 - INFO - FASE 5: CARGA
+2026-02-04 15:03:41,476 - INFO - ============================================================
+2026-02-04 15:03:41,481 - INFO -   Archivo exportado: C:\Users\mauri\OneDrive\Escritorio pc anterior\Analisis ventas mamy blue ENERO\data\processed\ventas_final_procesadas.csv
+2026-02-04 15:03:41,482 - INFO -   Filas: 454
+2026-02-04 15:03:41,482 - INFO -   Columnas: ['Ranking', 'Articulo', 'Descripcion', 'Cantidad', 'Venta_Neta', 'Porcentaje', 'Porcentaje_Acumulado', 'Clasificacion_ABC', 'Sucursales']
+2026-02-04 15:03:41,482 - INFO - 
+############################################################
+2026-02-04 15:03:41,482 - INFO - PIPELINE COMPLETADO EXITOSAMENTE
+2026-02-04 15:03:41,482 - INFO - Archivo final: ventas_final_procesadas.csv
+2026-02-04 15:03:41,482 - INFO - ############################################################
+2026-02-04 19:28:26,314 - INFO - 
+############################################################
+2026-02-04 19:28:26,314 - INFO - DATA CLEANING PIPELINE - ETL + PARETO UNIFICADO
+2026-02-04 19:28:26,314 - INFO - ############################################################
+2026-02-04 19:28:26,315 - INFO - 
+============================================================
+2026-02-04 19:28:26,315 - INFO - FASE 1: EXTRACCION (Smart Header Detection)
+2026-02-04 19:28:26,315 - INFO - ============================================================
+2026-02-04 19:28:26,315 - INFO - Archivos encontrados: 9
+2026-02-04 19:28:26,316 - INFO - 
+  Procesando: online.csv
+2026-02-04 19:28:26,322 - INFO -     OK: header=1, encoding=utf-8
+2026-02-04 19:28:26,324 - INFO -     ONLINE: 199 filas, 9 columnas
+2026-02-04 19:28:26,324 - INFO - 
+  Procesando: sucursal_1.csv
+2026-02-04 19:28:26,328 - INFO -     OK: header=1, encoding=utf-8
+2026-02-04 19:28:26,329 - INFO -     SUCURSAL_1: 324 filas, 9 columnas
+2026-02-04 19:28:26,329 - INFO - 
+  Procesando: sucursal_2.csv
+2026-02-04 19:28:26,332 - INFO -     OK: header=1, encoding=utf-8
+2026-02-04 19:28:26,332 - INFO -     SUCURSAL_2: 314 filas, 9 columnas
+2026-02-04 19:28:26,332 - INFO - 
+  Procesando: sucursal_3.csv
+2026-02-04 19:28:26,335 - INFO -     OK: header=1, encoding=utf-8
+2026-02-04 19:28:26,336 - INFO -     SUCURSAL_3: 331 filas, 9 columnas
+2026-02-04 19:28:26,336 - INFO - 
+  Procesando: sucursal_4.csv
+2026-02-04 19:28:26,338 - INFO -     OK: header=1, encoding=utf-8
+2026-02-04 19:28:26,339 - INFO -     SUCURSAL_4: 221 filas, 9 columnas
+2026-02-04 19:28:26,339 - INFO - 
+  Procesando: sucursal_5.csv
+2026-02-04 19:28:26,342 - INFO -     OK: header=1, encoding=utf-8
+2026-02-04 19:28:26,343 - INFO -     SUCURSAL_5: 297 filas, 9 columnas
+2026-02-04 19:28:26,343 - INFO - 
+  Procesando: sucursal_6.csv
+2026-02-04 19:28:26,346 - INFO -     OK: header=1, encoding=utf-8
+2026-02-04 19:28:26,346 - INFO -     SUCURSAL_6: 337 filas, 9 columnas
+2026-02-04 19:28:26,347 - INFO - 
+  Procesando: sucursal_7.csv
+2026-02-04 19:28:26,349 - INFO -     OK: header=1, encoding=utf-8
+2026-02-04 19:28:26,350 - INFO -     SUCURSAL_7: 281 filas, 9 columnas
+2026-02-04 19:28:26,350 - INFO - 
+  Procesando: sucursal_8.csv
+2026-02-04 19:28:26,353 - INFO -     OK: header=1, encoding=utf-8
+2026-02-04 19:28:26,353 - INFO -     SUCURSAL_8: 471 filas, 9 columnas
+2026-02-04 19:28:26,355 - INFO - 
+Total extraido: 2775 filas
+2026-02-04 19:28:26,356 - INFO - 
+============================================================
+2026-02-04 19:28:26,356 - INFO - FASE 2: NORMALIZACION DE COLUMNAS (Fuzzy Detection)
+2026-02-04 19:28:26,356 - INFO - ============================================================
+2026-02-04 19:28:26,356 - INFO -   Columnas originales: ['        Artículo           ', '   Talle   ', '   Color   ', '              Descripción                      ', 'Cantidad', '  Precio   ', '  Total Precio  ', 'Stock Actual', 'Sucursal']
+2026-02-04 19:28:26,359 - INFO -   Mapeo aplicado: {'Articulo': 'Articulo', 'Descripcion': 'Descripcion', 'Cantidad': 'Cantidad', 'Precio': 'Precio', 'Total Precio': 'Total_precio'}
+2026-02-04 19:28:26,359 - INFO -   Columnas normalizadas: ['Articulo', 'Talle', 'Color', 'Descripcion', 'Cantidad', 'Precio', 'Total_precio', 'Stock Actual', 'Sucursal']
+2026-02-04 19:28:26,360 - INFO -   OK: Columna 'Articulo' verificada correctamente
+2026-02-04 19:28:26,360 - INFO - 
+============================================================
+2026-02-04 19:28:26,360 - INFO - FASE 3: LIMPIEZA (Deteccion Flexible)
+2026-02-04 19:28:26,360 - INFO - ============================================================
+2026-02-04 19:28:26,360 - INFO - Columnas disponibles: ['Articulo', 'Talle', 'Color', 'Descripcion', 'Cantidad', 'Precio', 'Total_precio', 'Stock Actual', 'Sucursal']
+2026-02-04 19:28:26,361 - INFO -   OK Columna de total detectada como: 'Total_precio'
+2026-02-04 19:28:26,363 - INFO -   OK Columna 'Cantidad' convertida a numerico
+2026-02-04 19:28:26,363 - INFO -   OK Columna 'Precio' convertida a numerico
+2026-02-04 19:28:26,369 - INFO -   Filas con Articulo vacio eliminadas: 8
+2026-02-04 19:28:26,382 - WARNING -   FILTRO PARETO: 9 filas de TOTAL/SUBTOTAL eliminadas
+2026-02-04 19:28:26,382 - INFO -   (Estas filas distorsionaban el calculo de Pareto)
+2026-02-04 19:28:26,382 - INFO - 
+Total limpio: 2758 filas
+2026-02-04 19:28:26,382 - INFO - Columnas finales: ['Articulo', 'Talle', 'Color', 'Descripcion', 'Cantidad', 'Precio', 'Total_precio', 'Stock Actual', 'Sucursal', 'Venta_Neta']
+2026-02-04 19:28:26,382 - INFO - 
+============================================================
+2026-02-04 19:28:26,382 - INFO - FASE 4: TRANSFORMACION - ANALISIS PARETO (ABC)
+2026-02-04 19:28:26,382 - INFO - ============================================================
+2026-02-04 19:28:26,382 - INFO -   Columnas disponibles para Pareto: ['Articulo', 'Talle', 'Color', 'Descripcion', 'Cantidad', 'Precio', 'Total_precio', 'Stock Actual', 'Sucursal', 'Venta_Neta']
+2026-02-04 19:28:26,382 - INFO -   Agregacion configurada: ['Venta_Neta', 'Descripcion', 'Cantidad']
+2026-02-04 19:28:26,382 - INFO -   Granularidad: Articulo + Sucursal (para Slicer en Power BI)
+2026-02-04 19:28:26,394 - INFO -   Combinaciones Articulo-Sucursal: 1347
+2026-02-04 19:28:26,395 - WARNING -   129 combinaciones con venta negativa (devoluciones netas)
+2026-02-04 19:28:26,401 - INFO - 
+  RESUMEN PARETO ABC (Granularidad: Articulo x Sucursal):
+2026-02-04 19:28:26,401 - INFO -   =======================================================
+2026-02-04 19:28:26,401 - INFO -   Articulos unicos: 461
+2026-02-04 19:28:26,401 - INFO -   Sucursales: 9
+2026-02-04 19:28:26,401 - INFO -   Combinaciones totales: 1218
+2026-02-04 19:28:26,401 - INFO -   =======================================================
+2026-02-04 19:28:26,401 - INFO -   Clase A (80%):    485 combinaciones (39.8%)
+2026-02-04 19:28:26,401 - INFO -   Clase B (95%):    407 combinaciones (33.4%)
+2026-02-04 19:28:26,401 - INFO -   Clase C (100%):   326 combinaciones (26.8%)
+2026-02-04 19:28:26,401 - INFO -   =======================================================
+2026-02-04 19:28:26,401 - INFO -   Facturacion total: $314,799,357.08
+2026-02-04 19:28:26,401 - INFO - 
+  TOP 5 (Articulo-Sucursal):
+2026-02-04 19:28:26,402 - INFO -     #1: 26110 @ SUCURSAL_6 - $4,150,958.00 (1.32%)
+2026-02-04 19:28:26,402 - INFO -     #2: 26110 @ SUCURSAL_1 - $2,964,970.00 (0.94%)
+2026-02-04 19:28:26,402 - INFO -     #3: 26110 @ SUCURSAL_8 - $2,964,970.00 (0.94%)
+2026-02-04 19:28:26,402 - INFO -     #4: 26419 @ SUCURSAL_8 - $2,182,080.00 (0.69%)
+2026-02-04 19:28:26,403 - INFO -     #5: 26601 @ SUCURSAL_5 - $2,150,934.00 (0.68%)
+2026-02-04 19:28:26,403 - INFO - 
+============================================================
+2026-02-04 19:28:26,403 - INFO - FASE 5: CARGA
+2026-02-04 19:28:26,403 - INFO - ============================================================
+2026-02-04 19:28:26,411 - INFO -   Archivo exportado: C:\Users\mauri\OneDrive\Escritorio pc anterior\Analisis ventas mamy blue ENERO\data\processed\ventas_final_procesadas.csv
+2026-02-04 19:28:26,412 - INFO -   Filas: 1218
+2026-02-04 19:28:26,412 - INFO -   Columnas: ['Ranking', 'Articulo', 'Descripcion', 'Sucursal', 'Cantidad', 'Venta_Neta', 'Porcentaje', 'Porcentaje_Acumulado', 'Clasificacion_ABC']
+2026-02-04 19:28:26,412 - INFO - 
+############################################################
+2026-02-04 19:28:26,412 - INFO - PIPELINE COMPLETADO EXITOSAMENTE
+2026-02-04 19:28:26,412 - INFO - Archivo final: ventas_final_procesadas.csv
+2026-02-04 19:28:26,412 - INFO - ############################################################
+2026-02-04 19:33:43,683 - INFO - 
+############################################################
+2026-02-04 19:33:43,683 - INFO - DATA CLEANING PIPELINE - ETL + PARETO UNIFICADO
+2026-02-04 19:33:43,683 - INFO - ############################################################
+2026-02-04 19:33:43,684 - INFO - 
+============================================================
+2026-02-04 19:33:43,684 - INFO - FASE 1: EXTRACCION (Smart Header Detection)
+2026-02-04 19:33:43,684 - INFO - ============================================================
+2026-02-04 19:33:43,685 - INFO - Archivos encontrados: 9
+2026-02-04 19:33:43,685 - INFO - 
+  Procesando: online.csv
+2026-02-04 19:33:43,691 - INFO -     OK: header=1, encoding=utf-8
+2026-02-04 19:33:43,691 - INFO -     ONLINE: 199 filas, 9 columnas
+2026-02-04 19:33:43,692 - INFO - 
+  Procesando: sucursal_1.csv
+2026-02-04 19:33:43,696 - INFO -     OK: header=1, encoding=utf-8
+2026-02-04 19:33:43,697 - INFO -     SUCURSAL_1: 324 filas, 9 columnas
+2026-02-04 19:33:43,697 - INFO - 
+  Procesando: sucursal_2.csv
+2026-02-04 19:33:43,701 - INFO -     OK: header=1, encoding=utf-8
+2026-02-04 19:33:43,701 - INFO -     SUCURSAL_2: 314 filas, 9 columnas
+2026-02-04 19:33:43,702 - INFO - 
+  Procesando: sucursal_3.csv
+2026-02-04 19:33:43,705 - INFO -     OK: header=1, encoding=utf-8
+2026-02-04 19:33:43,706 - INFO -     SUCURSAL_3: 331 filas, 9 columnas
+2026-02-04 19:33:43,706 - INFO - 
+  Procesando: sucursal_4.csv
+2026-02-04 19:33:43,710 - INFO -     OK: header=1, encoding=utf-8
+2026-02-04 19:33:43,711 - INFO -     SUCURSAL_4: 221 filas, 9 columnas
+2026-02-04 19:33:43,711 - INFO - 
+  Procesando: sucursal_5.csv
+2026-02-04 19:33:43,715 - INFO -     OK: header=1, encoding=utf-8
+2026-02-04 19:33:43,715 - INFO -     SUCURSAL_5: 297 filas, 9 columnas
+2026-02-04 19:33:43,715 - INFO - 
+  Procesando: sucursal_6.csv
+2026-02-04 19:33:43,719 - INFO -     OK: header=1, encoding=utf-8
+2026-02-04 19:33:43,720 - INFO -     SUCURSAL_6: 337 filas, 9 columnas
+2026-02-04 19:33:43,720 - INFO - 
+  Procesando: sucursal_7.csv
+2026-02-04 19:33:43,724 - INFO -     OK: header=1, encoding=utf-8
+2026-02-04 19:33:43,725 - INFO -     SUCURSAL_7: 281 filas, 9 columnas
+2026-02-04 19:33:43,725 - INFO - 
+  Procesando: sucursal_8.csv
+2026-02-04 19:33:43,729 - INFO -     OK: header=1, encoding=utf-8
+2026-02-04 19:33:43,730 - INFO -     SUCURSAL_8: 471 filas, 9 columnas
+2026-02-04 19:33:43,731 - INFO - 
+Total extraido: 2775 filas
+2026-02-04 19:33:43,732 - INFO - 
+============================================================
+2026-02-04 19:33:43,732 - INFO - FASE 2: NORMALIZACION DE COLUMNAS (Fuzzy Detection)
+2026-02-04 19:33:43,732 - INFO - ============================================================
+2026-02-04 19:33:43,733 - INFO -   Columnas originales: ['        Artículo           ', '   Talle   ', '   Color   ', '              Descripción                      ', 'Cantidad', '  Precio   ', '  Total Precio  ', 'Stock Actual', 'Sucursal']
+2026-02-04 19:33:43,735 - INFO -   Mapeo aplicado: {'Articulo': 'Articulo', 'Descripcion': 'Descripcion', 'Cantidad': 'Cantidad', 'Precio': 'Precio', 'Total Precio': 'Total_precio'}
+2026-02-04 19:33:43,735 - INFO -   Columnas normalizadas: ['Articulo', 'Talle', 'Color', 'Descripcion', 'Cantidad', 'Precio', 'Total_precio', 'Stock Actual', 'Sucursal']
+2026-02-04 19:33:43,735 - INFO -   OK: Columna 'Articulo' verificada correctamente
+2026-02-04 19:33:43,736 - INFO - 
+============================================================
+2026-02-04 19:33:43,736 - INFO - FASE 3: LIMPIEZA (Deteccion Flexible)
+2026-02-04 19:33:43,736 - INFO - ============================================================
+2026-02-04 19:33:43,736 - INFO - Columnas disponibles: ['Articulo', 'Talle', 'Color', 'Descripcion', 'Cantidad', 'Precio', 'Total_precio', 'Stock Actual', 'Sucursal']
+2026-02-04 19:33:43,737 - INFO -   OK Columna de total detectada como: 'Total_precio'
+2026-02-04 19:33:43,737 - INFO -   OK Columna 'Cantidad' convertida a numerico
+2026-02-04 19:33:43,738 - INFO -   OK Columna 'Precio' convertida a numerico
+2026-02-04 19:33:43,741 - INFO -   Filas con Articulo vacio eliminadas: 8
+2026-02-04 19:33:43,752 - WARNING -   FILTRO PARETO: 9 filas de TOTAL/SUBTOTAL eliminadas
+2026-02-04 19:33:43,752 - INFO -   (Estas filas distorsionaban el calculo de Pareto)
+2026-02-04 19:33:43,752 - INFO - 
+Total limpio: 2758 filas
+2026-02-04 19:33:43,752 - INFO - Columnas finales: ['Articulo', 'Talle', 'Color', 'Descripcion', 'Cantidad', 'Precio', 'Total_precio', 'Stock Actual', 'Sucursal', 'Venta_Neta']
+2026-02-04 19:33:43,752 - INFO - 
+============================================================
+2026-02-04 19:33:43,753 - INFO - FASE 4: TRANSFORMACION - ANALISIS PARETO (ABC)
+2026-02-04 19:33:43,753 - INFO - ============================================================
+2026-02-04 19:33:43,753 - INFO -   Columnas disponibles para Pareto: ['Articulo', 'Talle', 'Color', 'Descripcion', 'Cantidad', 'Precio', 'Total_precio', 'Stock Actual', 'Sucursal', 'Venta_Neta']
+2026-02-04 19:33:43,753 - INFO -   Agregacion configurada: ['Venta_Neta', 'Descripcion', 'Cantidad']
+2026-02-04 19:33:43,753 - INFO -   Granularidad: Articulo + Sucursal (para Slicer en Power BI)
+2026-02-04 19:33:43,757 - INFO -   Combinaciones Articulo-Sucursal: 1347
+2026-02-04 19:33:43,758 - WARNING -   129 combinaciones con venta negativa (devoluciones netas)
+2026-02-04 19:33:43,762 - INFO - 
+  RESUMEN PARETO ABC (Granularidad: Articulo x Sucursal):
+2026-02-04 19:33:43,763 - INFO -   =======================================================
+2026-02-04 19:33:43,763 - INFO -   Articulos unicos: 461
+2026-02-04 19:33:43,763 - INFO -   Sucursales: 9
+2026-02-04 19:33:43,763 - INFO -   Combinaciones totales: 1218
+2026-02-04 19:33:43,763 - INFO -   =======================================================
+2026-02-04 19:33:43,763 - INFO -   Clase A (80%):    485 combinaciones (39.8%)
+2026-02-04 19:33:43,764 - INFO -   Clase B (95%):    407 combinaciones (33.4%)
+2026-02-04 19:33:43,764 - INFO -   Clase C (100%):   326 combinaciones (26.8%)
+2026-02-04 19:33:43,764 - INFO -   =======================================================
+2026-02-04 19:33:43,764 - INFO -   Facturacion total: $314,799,357.08
+2026-02-04 19:33:43,764 - INFO - 
+  TOP 5 (Articulo-Sucursal):
+2026-02-04 19:33:43,764 - INFO -     #1: 26110 @ SUCURSAL_6 - $4,150,958.00 (1.32%)
+2026-02-04 19:33:43,765 - INFO -     #2: 26110 @ SUCURSAL_1 - $2,964,970.00 (0.94%)
+2026-02-04 19:33:43,765 - INFO -     #3: 26110 @ SUCURSAL_8 - $2,964,970.00 (0.94%)
+2026-02-04 19:33:43,765 - INFO -     #4: 26419 @ SUCURSAL_8 - $2,182,080.00 (0.69%)
+2026-02-04 19:33:43,765 - INFO -     #5: 26601 @ SUCURSAL_5 - $2,150,934.00 (0.68%)
+2026-02-04 19:33:43,765 - INFO - 
+============================================================
+2026-02-04 19:33:43,765 - INFO - FASE 5: CARGA
+2026-02-04 19:33:43,765 - INFO - ============================================================
+2026-02-04 19:33:43,773 - INFO -   Archivo exportado: C:\Users\mauri\OneDrive\Escritorio pc anterior\Analisis ventas mamy blue ENERO\data\processed\ventas_final_procesadas.csv
+2026-02-04 19:33:43,773 - INFO -   Filas: 1218
+2026-02-04 19:33:43,774 - INFO -   Columnas: ['Ranking', 'Articulo', 'Descripcion', 'Sucursal', 'Cantidad', 'Venta_Neta', 'Porcentaje', 'Porcentaje_Acumulado', 'Clasificacion_ABC']
+2026-02-04 19:33:43,774 - INFO - 
+############################################################
+2026-02-04 19:33:43,774 - INFO - PIPELINE COMPLETADO EXITOSAMENTE
+2026-02-04 19:33:43,774 - INFO - Archivo final: ventas_final_procesadas.csv
+2026-02-04 19:33:43,774 - INFO - ############################################################
+2026-02-04 19:45:18,422 - INFO - 
+############################################################
+2026-02-04 19:45:18,428 - INFO - DATA CLEANING PIPELINE - ETL + PARETO UNIFICADO
+2026-02-04 19:45:18,428 - INFO - ############################################################
+2026-02-04 19:45:18,428 - INFO - 
+============================================================
+2026-02-04 19:45:18,428 - INFO - FASE 1: EXTRACCION (Smart Header Detection)
+2026-02-04 19:45:18,428 - INFO - ============================================================
+2026-02-04 19:45:18,429 - INFO - Archivos encontrados: 9
+2026-02-04 19:45:18,429 - INFO - 
+  Procesando: online.csv
+2026-02-04 19:45:18,435 - INFO -     OK: header=1, encoding=utf-8
+2026-02-04 19:45:18,437 - INFO -     ONLINE: 199 filas, 9 columnas
+2026-02-04 19:45:18,437 - INFO - 
+  Procesando: sucursal_1.csv
+2026-02-04 19:45:18,439 - INFO -     OK: header=1, encoding=utf-8
+2026-02-04 19:45:18,439 - INFO -     SUCURSAL_1: 324 filas, 9 columnas
+2026-02-04 19:45:18,439 - INFO - 
+  Procesando: sucursal_2.csv
+2026-02-04 19:45:18,442 - INFO -     OK: header=1, encoding=utf-8
+2026-02-04 19:45:18,442 - INFO -     SUCURSAL_2: 314 filas, 9 columnas
+2026-02-04 19:45:18,442 - INFO - 
+  Procesando: sucursal_3.csv
+2026-02-04 19:45:18,445 - INFO -     OK: header=1, encoding=utf-8
+2026-02-04 19:45:18,445 - INFO -     SUCURSAL_3: 331 filas, 9 columnas
+2026-02-04 19:45:18,445 - INFO - 
+  Procesando: sucursal_4.csv
+2026-02-04 19:45:18,448 - INFO -     OK: header=1, encoding=utf-8
+2026-02-04 19:45:18,448 - INFO -     SUCURSAL_4: 221 filas, 9 columnas
+2026-02-04 19:45:18,448 - INFO - 
+  Procesando: sucursal_5.csv
+2026-02-04 19:45:18,450 - INFO -     OK: header=1, encoding=utf-8
+2026-02-04 19:45:18,451 - INFO -     SUCURSAL_5: 297 filas, 9 columnas
+2026-02-04 19:45:18,451 - INFO - 
+  Procesando: sucursal_6.csv
+2026-02-04 19:45:18,453 - INFO -     OK: header=1, encoding=utf-8
+2026-02-04 19:45:18,453 - INFO -     SUCURSAL_6: 337 filas, 9 columnas
+2026-02-04 19:45:18,453 - INFO - 
+  Procesando: sucursal_7.csv
+2026-02-04 19:45:18,455 - INFO -     OK: header=1, encoding=utf-8
+2026-02-04 19:45:18,456 - INFO -     SUCURSAL_7: 281 filas, 9 columnas
+2026-02-04 19:45:18,456 - INFO - 
+  Procesando: sucursal_8.csv
+2026-02-04 19:45:18,458 - INFO -     OK: header=1, encoding=utf-8
+2026-02-04 19:45:18,458 - INFO -     SUCURSAL_8: 471 filas, 9 columnas
+2026-02-04 19:45:18,460 - INFO - 
+Total extraido: 2775 filas
+2026-02-04 19:45:18,460 - INFO - 
+============================================================
+2026-02-04 19:45:18,460 - INFO - FASE 2: NORMALIZACION DE COLUMNAS (Fuzzy Detection)
+2026-02-04 19:45:18,460 - INFO - ============================================================
+2026-02-04 19:45:18,460 - INFO -   Columnas originales: ['        Artículo           ', '   Talle   ', '   Color   ', '              Descripción                      ', 'Cantidad', '  Precio   ', '  Total Precio  ', 'Stock Actual', 'Sucursal']
+2026-02-04 19:45:18,463 - INFO -   Mapeo aplicado: {'Articulo': 'Articulo', 'Descripcion': 'Descripcion', 'Cantidad': 'Cantidad', 'Precio': 'Precio', 'Total Precio': 'Total_precio'}
+2026-02-04 19:45:18,463 - INFO -   Columnas normalizadas: ['Articulo', 'Talle', 'Color', 'Descripcion', 'Cantidad', 'Precio', 'Total_precio', 'Stock Actual', 'Sucursal']
+2026-02-04 19:45:18,463 - INFO -   OK: Columna 'Articulo' verificada correctamente
+2026-02-04 19:45:18,463 - INFO - 
+============================================================
+2026-02-04 19:45:18,463 - INFO - FASE 3: LIMPIEZA (Deteccion Flexible)
+2026-02-04 19:45:18,464 - INFO - ============================================================
+2026-02-04 19:45:18,464 - INFO - Columnas disponibles: ['Articulo', 'Talle', 'Color', 'Descripcion', 'Cantidad', 'Precio', 'Total_precio', 'Stock Actual', 'Sucursal']
+2026-02-04 19:45:18,464 - INFO -   OK Columna de total detectada como: 'Total_precio'
+2026-02-04 19:45:18,466 - INFO -   OK Columna 'Cantidad' convertida a numerico
+2026-02-04 19:45:18,466 - INFO -   OK Columna 'Precio' convertida a numerico
+2026-02-04 19:45:18,472 - INFO -   Filas con Articulo vacio eliminadas: 8
+2026-02-04 19:45:18,482 - WARNING -   FILTRO PARETO: 9 filas de TOTAL/SUBTOTAL eliminadas
+2026-02-04 19:45:18,482 - INFO -   (Estas filas distorsionaban el calculo de Pareto)
+2026-02-04 19:45:18,482 - INFO - 
+Total limpio: 2758 filas
+2026-02-04 19:45:18,482 - INFO - Columnas finales: ['Articulo', 'Talle', 'Color', 'Descripcion', 'Cantidad', 'Precio', 'Total_precio', 'Stock Actual', 'Sucursal', 'Venta_Neta']
+2026-02-04 19:45:18,482 - INFO - 
+============================================================
+2026-02-04 19:45:18,482 - INFO - FASE 4: TRANSFORMACION - ANALISIS PARETO (Data Engineering)
+2026-02-04 19:45:18,482 - INFO - ============================================================
+2026-02-04 19:45:18,482 - INFO -   Columnas disponibles: ['Articulo', 'Talle', 'Color', 'Descripcion', 'Cantidad', 'Precio', 'Total_precio', 'Stock Actual', 'Sucursal', 'Venta_Neta']
+2026-02-04 19:45:18,482 - INFO - 
+  PASO 1: Calculo Maestro (nivel empresa)...
+2026-02-04 19:45:18,493 - INFO -     Articulos con venta positiva: 454
+2026-02-04 19:45:18,494 - INFO -     Facturacion total empresa: $309,550,458.08
+2026-02-04 19:45:18,495 - INFO - 
+  CLASIFICACION ABC GLOBAL:
+2026-02-04 19:45:18,495 - INFO -   ==================================================
+2026-02-04 19:45:18,495 - INFO -   Clase A (80%):    92 articulos (20.3% del catalogo)
+2026-02-04 19:45:18,495 - INFO -   Clase B (95%):   147 articulos (32.4% del catalogo)
+2026-02-04 19:45:18,495 - INFO -   Clase C (100%):  215 articulos (47.4% del catalogo)
+2026-02-04 19:45:18,495 - INFO -   ==================================================
+2026-02-04 19:45:18,495 - INFO - 
+  PASO 2: Detalle por Sucursal...
+2026-02-04 19:45:18,500 - INFO -     Combinaciones Articulo-Sucursal: 1218
+2026-02-04 19:45:18,501 - INFO -     Sucursales: 9
+2026-02-04 19:45:18,501 - INFO - 
+  PASO 3: Merge (Maestro + Detalle)...
+2026-02-04 19:45:18,506 - INFO -     Filas en resultado final: 1211
+2026-02-04 19:45:18,510 - INFO - 
+  TOP 5 ARTICULOS (Ranking Global):
+2026-02-04 19:45:18,510 - INFO -     #1: 26110 CAMISA CAMELIA - $16,307,335 (5.27%) [A]
+2026-02-04 19:45:18,510 - INFO -     #2: 26419 CHAQUETA SILENE - $8,546,480 (2.76%) [A]
+2026-02-04 19:45:18,510 - INFO -     #3: 26209 PANTALON NARCISO - $7,735,641 (2.5%) [A]
+2026-02-04 19:45:18,510 - INFO -     #4: 26207 PANTALON FRESIA - $7,283,656 (2.35%) [A]
+2026-02-04 19:45:18,510 - INFO -     #5: 26203 PANTALON SILENE - $6,622,560 (2.14%) [A]
+2026-02-04 19:45:18,511 - INFO - 
+============================================================
+2026-02-04 19:45:18,511 - INFO - FASE 5: CARGA
+2026-02-04 19:45:18,511 - INFO - ============================================================
+2026-02-04 19:45:18,519 - INFO -   Archivo exportado: C:\Users\mauri\OneDrive\Escritorio pc anterior\Analisis ventas mamy blue ENERO\data\processed\ventas_final_procesadas.csv
+2026-02-04 19:45:18,519 - INFO -   Filas: 1211
+2026-02-04 19:45:18,519 - INFO -   Columnas: ['Ranking', 'Articulo', 'Descripcion', 'Clasificacion_ABC', 'Sucursal', 'Venta_Sucursal', 'Cantidad_Sucursal', 'Venta_Total_Articulo', 'Porcentaje_Articulo_Global', 'Porcentaje_Acumulado']
+2026-02-04 19:45:18,519 - INFO - 
+############################################################
+2026-02-04 19:45:18,519 - INFO - PIPELINE COMPLETADO EXITOSAMENTE
+2026-02-04 19:45:18,519 - INFO - Archivo final: ventas_final_procesadas.csv
+2026-02-04 19:45:18,519 - INFO - ############################################################
+2026-02-04 19:46:06,472 - INFO - 
+############################################################
+2026-02-04 19:46:06,472 - INFO - DATA CLEANING PIPELINE - ETL + PARETO UNIFICADO
+2026-02-04 19:46:06,473 - INFO - ############################################################
+2026-02-04 19:46:06,473 - INFO - 
+============================================================
+2026-02-04 19:46:06,473 - INFO - FASE 1: EXTRACCION (Smart Header Detection)
+2026-02-04 19:46:06,474 - INFO - ============================================================
+2026-02-04 19:46:06,474 - INFO - Archivos encontrados: 9
+2026-02-04 19:46:06,474 - INFO - 
+  Procesando: online.csv
+2026-02-04 19:46:06,480 - INFO -     OK: header=1, encoding=utf-8
+2026-02-04 19:46:06,481 - INFO -     ONLINE: 199 filas, 9 columnas
+2026-02-04 19:46:06,481 - INFO - 
+  Procesando: sucursal_1.csv
+2026-02-04 19:46:06,484 - INFO -     OK: header=1, encoding=utf-8
+2026-02-04 19:46:06,485 - INFO -     SUCURSAL_1: 324 filas, 9 columnas
+2026-02-04 19:46:06,485 - INFO - 
+  Procesando: sucursal_2.csv
+2026-02-04 19:46:06,489 - INFO -     OK: header=1, encoding=utf-8
+2026-02-04 19:46:06,489 - INFO -     SUCURSAL_2: 314 filas, 9 columnas
+2026-02-04 19:46:06,490 - INFO - 
+  Procesando: sucursal_3.csv
+2026-02-04 19:46:06,493 - INFO -     OK: header=1, encoding=utf-8
+2026-02-04 19:46:06,494 - INFO -     SUCURSAL_3: 331 filas, 9 columnas
+2026-02-04 19:46:06,494 - INFO - 
+  Procesando: sucursal_4.csv
+2026-02-04 19:46:06,497 - INFO -     OK: header=1, encoding=utf-8
+2026-02-04 19:46:06,497 - INFO -     SUCURSAL_4: 221 filas, 9 columnas
+2026-02-04 19:46:06,497 - INFO - 
+  Procesando: sucursal_5.csv
+2026-02-04 19:46:06,500 - INFO -     OK: header=1, encoding=utf-8
+2026-02-04 19:46:06,501 - INFO -     SUCURSAL_5: 297 filas, 9 columnas
+2026-02-04 19:46:06,501 - INFO - 
+  Procesando: sucursal_6.csv
+2026-02-04 19:46:06,504 - INFO -     OK: header=1, encoding=utf-8
+2026-02-04 19:46:06,505 - INFO -     SUCURSAL_6: 337 filas, 9 columnas
+2026-02-04 19:46:06,505 - INFO - 
+  Procesando: sucursal_7.csv
+2026-02-04 19:46:06,508 - INFO -     OK: header=1, encoding=utf-8
+2026-02-04 19:46:06,509 - INFO -     SUCURSAL_7: 281 filas, 9 columnas
+2026-02-04 19:46:06,509 - INFO - 
+  Procesando: sucursal_8.csv
+2026-02-04 19:46:06,512 - INFO -     OK: header=1, encoding=utf-8
+2026-02-04 19:46:06,513 - INFO -     SUCURSAL_8: 471 filas, 9 columnas
+2026-02-04 19:46:06,514 - INFO - 
+Total extraido: 2775 filas
+2026-02-04 19:46:06,514 - INFO - 
+============================================================
+2026-02-04 19:46:06,514 - INFO - FASE 2: NORMALIZACION DE COLUMNAS (Fuzzy Detection)
+2026-02-04 19:46:06,514 - INFO - ============================================================
+2026-02-04 19:46:06,515 - INFO -   Columnas originales: ['        Artículo           ', '   Talle   ', '   Color   ', '              Descripción                      ', 'Cantidad', '  Precio   ', '  Total Precio  ', 'Stock Actual', 'Sucursal']
+2026-02-04 19:46:06,516 - INFO -   Mapeo aplicado: {'Articulo': 'Articulo', 'Descripcion': 'Descripcion', 'Cantidad': 'Cantidad', 'Precio': 'Precio', 'Total Precio': 'Total_precio'}
+2026-02-04 19:46:06,516 - INFO -   Columnas normalizadas: ['Articulo', 'Talle', 'Color', 'Descripcion', 'Cantidad', 'Precio', 'Total_precio', 'Stock Actual', 'Sucursal']
+2026-02-04 19:46:06,517 - INFO -   OK: Columna 'Articulo' verificada correctamente
+2026-02-04 19:46:06,517 - INFO - 
+============================================================
+2026-02-04 19:46:06,517 - INFO - FASE 3: LIMPIEZA (Deteccion Flexible)
+2026-02-04 19:46:06,517 - INFO - ============================================================
+2026-02-04 19:46:06,517 - INFO - Columnas disponibles: ['Articulo', 'Talle', 'Color', 'Descripcion', 'Cantidad', 'Precio', 'Total_precio', 'Stock Actual', 'Sucursal']
+2026-02-04 19:46:06,518 - INFO -   OK Columna de total detectada como: 'Total_precio'
+2026-02-04 19:46:06,518 - INFO -   OK Columna 'Cantidad' convertida a numerico
+2026-02-04 19:46:06,518 - INFO -   OK Columna 'Precio' convertida a numerico
+2026-02-04 19:46:06,521 - INFO -   Filas con Articulo vacio eliminadas: 8
+2026-02-04 19:46:06,532 - WARNING -   FILTRO PARETO: 9 filas de TOTAL/SUBTOTAL eliminadas
+2026-02-04 19:46:06,532 - INFO -   (Estas filas distorsionaban el calculo de Pareto)
+2026-02-04 19:46:06,532 - INFO - 
+Total limpio: 2758 filas
+2026-02-04 19:46:06,533 - INFO - Columnas finales: ['Articulo', 'Talle', 'Color', 'Descripcion', 'Cantidad', 'Precio', 'Total_precio', 'Stock Actual', 'Sucursal', 'Venta_Neta']
+2026-02-04 19:46:06,533 - INFO - 
+============================================================
+2026-02-04 19:46:06,533 - INFO - FASE 4: TRANSFORMACION - ANALISIS PARETO (Data Engineering)
+2026-02-04 19:46:06,533 - INFO - ============================================================
+2026-02-04 19:46:06,533 - INFO -   Columnas disponibles: ['Articulo', 'Talle', 'Color', 'Descripcion', 'Cantidad', 'Precio', 'Total_precio', 'Stock Actual', 'Sucursal', 'Venta_Neta']
+2026-02-04 19:46:06,533 - INFO - 
+  PASO 1: Calculo Maestro (nivel empresa)...
+2026-02-04 19:46:06,538 - INFO -     Articulos con venta positiva: 454
+2026-02-04 19:46:06,539 - INFO -     Facturacion total empresa: $309,550,458.08
+2026-02-04 19:46:06,540 - INFO - 
+  CLASIFICACION ABC GLOBAL:
+2026-02-04 19:46:06,540 - INFO -   ==================================================
+2026-02-04 19:46:06,540 - INFO -   Clase A (80%):    92 articulos (20.3% del catalogo)
+2026-02-04 19:46:06,540 - INFO -   Clase B (95%):   147 articulos (32.4% del catalogo)
+2026-02-04 19:46:06,540 - INFO -   Clase C (100%):  215 articulos (47.4% del catalogo)
+2026-02-04 19:46:06,541 - INFO -   ==================================================
+2026-02-04 19:46:06,541 - INFO - 
+  PASO 2: Detalle por Sucursal...
+2026-02-04 19:46:06,543 - INFO -     Combinaciones Articulo-Sucursal: 1218
+2026-02-04 19:46:06,544 - INFO -     Sucursales: 9
+2026-02-04 19:46:06,544 - INFO - 
+  PASO 3: Merge (Maestro + Detalle)...
+2026-02-04 19:46:06,547 - INFO -     Filas en resultado final: 1211
+2026-02-04 19:46:06,549 - INFO - 
+  TOP 5 ARTICULOS (Ranking Global):
+2026-02-04 19:46:06,549 - INFO -     #1: 26110 CAMISA CAMELIA - $16,307,335 (5.27%) [A]
+2026-02-04 19:46:06,549 - INFO -     #2: 26419 CHAQUETA SILENE - $8,546,480 (2.76%) [A]
+2026-02-04 19:46:06,550 - INFO -     #3: 26209 PANTALON NARCISO - $7,735,641 (2.5%) [A]
+2026-02-04 19:46:06,550 - INFO -     #4: 26207 PANTALON FRESIA - $7,283,656 (2.35%) [A]
+2026-02-04 19:46:06,550 - INFO -     #5: 26203 PANTALON SILENE - $6,622,560 (2.14%) [A]
+2026-02-04 19:46:06,550 - INFO - 
+============================================================
+2026-02-04 19:46:06,551 - INFO - FASE 5: CARGA
+2026-02-04 19:46:06,551 - INFO - ============================================================
+2026-02-04 19:46:06,559 - INFO -   Archivo exportado: C:\Users\mauri\OneDrive\Escritorio pc anterior\Analisis ventas mamy blue ENERO\data\processed\ventas_final_procesadas.csv
+2026-02-04 19:46:06,559 - INFO -   Filas: 1211
+2026-02-04 19:46:06,559 - INFO -   Columnas: ['Ranking', 'Articulo', 'Descripcion', 'Clasificacion_ABC', 'Sucursal', 'Venta_Sucursal', 'Cantidad_Sucursal', 'Venta_Total_Articulo', 'Porcentaje_Articulo_Global', 'Porcentaje_Acumulado']
+2026-02-04 19:46:06,559 - INFO - 
+############################################################
+2026-02-04 19:46:06,559 - INFO - PIPELINE COMPLETADO EXITOSAMENTE
+2026-02-04 19:46:06,560 - INFO - Archivo final: ventas_final_procesadas.csv
+2026-02-04 19:46:06,560 - INFO - ############################################################
+2026-02-04 20:03:13,606 - INFO - 
+############################################################
+2026-02-04 20:03:13,606 - INFO - DATA CLEANING PIPELINE - MODELO ESTRELLA
+2026-02-04 20:03:13,607 - INFO - ############################################################
+2026-02-04 20:03:13,607 - INFO - 
+============================================================
+2026-02-04 20:03:13,607 - INFO - FASE 1: EXTRACCION (Smart Header Detection)
+2026-02-04 20:03:13,607 - INFO - ============================================================
+2026-02-04 20:03:13,608 - INFO - Archivos encontrados: 9
+2026-02-04 20:03:13,608 - INFO - 
+  Procesando: online.csv
+2026-02-04 20:03:13,612 - INFO -     OK: header=1, encoding=utf-8
+2026-02-04 20:03:13,613 - INFO -     ONLINE: 199 filas, 9 columnas
+2026-02-04 20:03:13,613 - INFO - 
+  Procesando: sucursal_1.csv
+2026-02-04 20:03:13,617 - INFO -     OK: header=1, encoding=utf-8
+2026-02-04 20:03:13,618 - INFO -     SUCURSAL_1: 324 filas, 9 columnas
+2026-02-04 20:03:13,618 - INFO - 
+  Procesando: sucursal_2.csv
+2026-02-04 20:03:13,623 - INFO -     OK: header=1, encoding=utf-8
+2026-02-04 20:03:13,624 - INFO -     SUCURSAL_2: 314 filas, 9 columnas
+2026-02-04 20:03:13,624 - INFO - 
+  Procesando: sucursal_3.csv
+2026-02-04 20:03:13,628 - INFO -     OK: header=1, encoding=utf-8
+2026-02-04 20:03:13,628 - INFO -     SUCURSAL_3: 331 filas, 9 columnas
+2026-02-04 20:03:13,628 - INFO - 
+  Procesando: sucursal_4.csv
+2026-02-04 20:03:13,632 - INFO -     OK: header=1, encoding=utf-8
+2026-02-04 20:03:13,633 - INFO -     SUCURSAL_4: 221 filas, 9 columnas
+2026-02-04 20:03:13,633 - INFO - 
+  Procesando: sucursal_5.csv
+2026-02-04 20:03:13,637 - INFO -     OK: header=1, encoding=utf-8
+2026-02-04 20:03:13,637 - INFO -     SUCURSAL_5: 297 filas, 9 columnas
+2026-02-04 20:03:13,637 - INFO - 
+  Procesando: sucursal_6.csv
+2026-02-04 20:03:13,640 - INFO -     OK: header=1, encoding=utf-8
+2026-02-04 20:03:13,640 - INFO -     SUCURSAL_6: 337 filas, 9 columnas
+2026-02-04 20:03:13,640 - INFO - 
+  Procesando: sucursal_7.csv
+2026-02-04 20:03:13,643 - INFO -     OK: header=1, encoding=utf-8
+2026-02-04 20:03:13,643 - INFO -     SUCURSAL_7: 281 filas, 9 columnas
+2026-02-04 20:03:13,643 - INFO - 
+  Procesando: sucursal_8.csv
+2026-02-04 20:03:13,646 - INFO -     OK: header=1, encoding=utf-8
+2026-02-04 20:03:13,646 - INFO -     SUCURSAL_8: 471 filas, 9 columnas
+2026-02-04 20:03:13,647 - INFO - 
+Total extraido: 2775 filas
+2026-02-04 20:03:13,647 - INFO - 
+============================================================
+2026-02-04 20:03:13,647 - INFO - FASE 2: NORMALIZACION DE COLUMNAS (Fuzzy Detection)
+2026-02-04 20:03:13,647 - INFO - ============================================================
+2026-02-04 20:03:13,647 - INFO -   Columnas originales: ['        Artículo           ', '   Talle   ', '   Color   ', '              Descripción                      ', 'Cantidad', '  Precio   ', '  Total Precio  ', 'Stock Actual', 'Sucursal']
+2026-02-04 20:03:13,648 - INFO -   Mapeo aplicado: {'Articulo': 'Articulo', 'Descripcion': 'Descripcion', 'Cantidad': 'Cantidad', 'Precio': 'Precio', 'Total Precio': 'Total_precio'}
+2026-02-04 20:03:13,648 - INFO -   Columnas normalizadas: ['Articulo', 'Talle', 'Color', 'Descripcion', 'Cantidad', 'Precio', 'Total_precio', 'Stock Actual', 'Sucursal']
+2026-02-04 20:03:13,648 - INFO -   OK: Columna 'Articulo' verificada correctamente
+2026-02-04 20:03:13,648 - INFO - 
+============================================================
+2026-02-04 20:03:13,648 - INFO - FASE 3: LIMPIEZA (Deteccion Flexible)
+2026-02-04 20:03:13,648 - INFO - ============================================================
+2026-02-04 20:03:13,648 - INFO - Columnas disponibles: ['Articulo', 'Talle', 'Color', 'Descripcion', 'Cantidad', 'Precio', 'Total_precio', 'Stock Actual', 'Sucursal']
+2026-02-04 20:03:13,649 - INFO -   OK Columna de total detectada como: 'Total_precio'
+2026-02-04 20:03:13,649 - INFO -   OK Columna 'Cantidad' convertida a numerico
+2026-02-04 20:03:13,650 - INFO -   OK Columna 'Precio' convertida a numerico
+2026-02-04 20:03:13,652 - INFO -   Filas con Articulo vacio eliminadas: 8
+2026-02-04 20:03:13,662 - WARNING -   FILTRO PARETO: 9 filas de TOTAL/SUBTOTAL eliminadas
+2026-02-04 20:03:13,662 - INFO -   (Estas filas distorsionaban el calculo de Pareto)
+2026-02-04 20:03:13,663 - INFO - 
+Total limpio: 2758 filas
+2026-02-04 20:03:13,663 - INFO - Columnas finales: ['Articulo', 'Talle', 'Color', 'Descripcion', 'Cantidad', 'Precio', 'Total_precio', 'Stock Actual', 'Sucursal', 'Venta_Neta']
+2026-02-04 20:03:13,663 - INFO - 
+============================================================
+2026-02-04 20:03:13,663 - INFO - FASE 4: TRANSFORMACION - ANALISIS PARETO (Data Engineering)
+2026-02-04 20:03:13,663 - INFO - ============================================================
+2026-02-04 20:03:13,663 - INFO -   Columnas disponibles: ['Articulo', 'Talle', 'Color', 'Descripcion', 'Cantidad', 'Precio', 'Total_precio', 'Stock Actual', 'Sucursal', 'Venta_Neta']
+2026-02-04 20:03:13,663 - INFO - 
+  PASO 1: Calculo Maestro (nivel empresa)...
+2026-02-04 20:03:13,667 - INFO -     Articulos con venta positiva: 454
+2026-02-04 20:03:13,667 - INFO -     Facturacion total empresa: $309,550,458.08
+2026-02-04 20:03:13,668 - INFO - 
+  CLASIFICACION ABC GLOBAL:
+2026-02-04 20:03:13,668 - INFO -   ==================================================
+2026-02-04 20:03:13,668 - INFO -   Clase A (80%):    92 articulos (20.3% del catalogo)
+2026-02-04 20:03:13,668 - INFO -   Clase B (95%):   147 articulos (32.4% del catalogo)
+2026-02-04 20:03:13,668 - INFO -   Clase C (100%):  215 articulos (47.4% del catalogo)
+2026-02-04 20:03:13,668 - INFO -   ==================================================
+2026-02-04 20:03:13,669 - INFO - 
+  PASO 2: Detalle por Sucursal...
+2026-02-04 20:03:13,672 - INFO -     Combinaciones Articulo-Sucursal: 1218
+2026-02-04 20:03:13,672 - INFO -     Sucursales: 9
+2026-02-04 20:03:13,672 - INFO - 
+  PASO 3: Merge (Maestro + Detalle)...
+2026-02-04 20:03:13,674 - INFO -     Filas en resultado final: 1211
+2026-02-04 20:03:13,676 - INFO - 
+  TOP 5 ARTICULOS (Ranking Global):
+2026-02-04 20:03:13,676 - INFO -     #1: 26110 CAMISA CAMELIA - $16,307,335 (5.27%) [A]
+2026-02-04 20:03:13,677 - INFO -     #2: 26419 CHAQUETA SILENE - $8,546,480 (2.76%) [A]
+2026-02-04 20:03:13,677 - INFO -     #3: 26209 PANTALON NARCISO - $7,735,641 (2.5%) [A]
+2026-02-04 20:03:13,677 - INFO -     #4: 26207 PANTALON FRESIA - $7,283,656 (2.35%) [A]
+2026-02-04 20:03:13,677 - INFO -     #5: 26203 PANTALON SILENE - $6,622,560 (2.14%) [A]
+2026-02-04 20:03:13,677 - INFO - 
+  MODELO ESTRELLA (Star Schema):
+2026-02-04 20:03:13,677 - INFO -     dim_articulos: 454 filas (1 por articulo)
+2026-02-04 20:03:13,678 - INFO -     fact_ventas: 1218 filas (Articulo x Sucursal)
+2026-02-04 20:03:13,678 - INFO - 
+============================================================
+2026-02-04 20:03:13,678 - INFO - FASE 5: CARGA - MODELO ESTRELLA (Star Schema)
+2026-02-04 20:03:13,678 - INFO - ============================================================
+2026-02-04 20:03:13,682 - INFO - 
+  DIMENSION: dim_articulos.csv
+2026-02-04 20:03:13,682 - INFO -     Filas: 454
+2026-02-04 20:03:13,682 - INFO -     Columnas: ['Articulo', 'Descripcion', 'Ranking', 'Clasificacion_ABC', 'Venta_Total_Articulo', 'Porcentaje_Articulo_Global', 'Porcentaje_Acumulado']
+2026-02-04 20:03:13,682 - INFO -     Clave primaria: Articulo
+2026-02-04 20:03:13,686 - INFO - 
+  HECHOS: fact_ventas.csv
+2026-02-04 20:03:13,686 - INFO -     Filas: 1218
+2026-02-04 20:03:13,686 - INFO -     Columnas: ['Articulo', 'Sucursal', 'Venta_Sucursal', 'Cantidad_Sucursal']
+2026-02-04 20:03:13,686 - INFO -     Clave foranea: Articulo -> dim_articulos
+2026-02-04 20:03:13,686 - INFO - 
+  RELACION EN POWER BI:
+2026-02-04 20:03:13,686 - INFO -   fact_ventas[Articulo] ---> dim_articulos[Articulo]
+2026-02-04 20:03:13,686 - INFO -   (Muchos a Uno, direccion: Ambas)
+2026-02-04 20:03:13,686 - INFO - 
+############################################################
+2026-02-04 20:03:13,686 - INFO - PIPELINE COMPLETADO EXITOSAMENTE
+2026-02-04 20:03:13,686 - INFO - Archivos generados:
+2026-02-04 20:03:13,686 - INFO -   - dim_articulos.csv (Dimension)
+2026-02-04 20:03:13,686 - INFO -   - fact_ventas.csv (Hechos)
+2026-02-04 20:03:13,686 - INFO - ############################################################
+2026-02-04 20:05:04,791 - INFO - 
+############################################################
+2026-02-04 20:05:04,791 - INFO - DATA CLEANING PIPELINE - MODELO ESTRELLA
+2026-02-04 20:05:04,792 - INFO - ############################################################
+2026-02-04 20:05:04,792 - INFO - 
+============================================================
+2026-02-04 20:05:04,792 - INFO - FASE 1: EXTRACCION (Smart Header Detection)
+2026-02-04 20:05:04,792 - INFO - ============================================================
+2026-02-04 20:05:04,792 - INFO - Archivos encontrados: 9
+2026-02-04 20:05:04,793 - INFO - 
+  Procesando: online.csv
+2026-02-04 20:05:04,797 - INFO -     OK: header=1, encoding=utf-8
+2026-02-04 20:05:04,798 - INFO -     ONLINE: 199 filas, 9 columnas
+2026-02-04 20:05:04,799 - INFO - 
+  Procesando: sucursal_1.csv
+2026-02-04 20:05:04,801 - INFO -     OK: header=1, encoding=utf-8
+2026-02-04 20:05:04,801 - INFO -     SUCURSAL_1: 324 filas, 9 columnas
+2026-02-04 20:05:04,801 - INFO - 
+  Procesando: sucursal_2.csv
+2026-02-04 20:05:04,804 - INFO -     OK: header=1, encoding=utf-8
+2026-02-04 20:05:04,805 - INFO -     SUCURSAL_2: 314 filas, 9 columnas
+2026-02-04 20:05:04,805 - INFO - 
+  Procesando: sucursal_3.csv
+2026-02-04 20:05:04,808 - INFO -     OK: header=1, encoding=utf-8
+2026-02-04 20:05:04,808 - INFO -     SUCURSAL_3: 331 filas, 9 columnas
+2026-02-04 20:05:04,808 - INFO - 
+  Procesando: sucursal_4.csv
+2026-02-04 20:05:04,810 - INFO -     OK: header=1, encoding=utf-8
+2026-02-04 20:05:04,811 - INFO -     SUCURSAL_4: 221 filas, 9 columnas
+2026-02-04 20:05:04,811 - INFO - 
+  Procesando: sucursal_5.csv
+2026-02-04 20:05:04,813 - INFO -     OK: header=1, encoding=utf-8
+2026-02-04 20:05:04,813 - INFO -     SUCURSAL_5: 297 filas, 9 columnas
+2026-02-04 20:05:04,814 - INFO - 
+  Procesando: sucursal_6.csv
+2026-02-04 20:05:04,816 - INFO -     OK: header=1, encoding=utf-8
+2026-02-04 20:05:04,816 - INFO -     SUCURSAL_6: 337 filas, 9 columnas
+2026-02-04 20:05:04,816 - INFO - 
+  Procesando: sucursal_7.csv
+2026-02-04 20:05:04,819 - INFO -     OK: header=1, encoding=utf-8
+2026-02-04 20:05:04,819 - INFO -     SUCURSAL_7: 281 filas, 9 columnas
+2026-02-04 20:05:04,819 - INFO - 
+  Procesando: sucursal_8.csv
+2026-02-04 20:05:04,822 - INFO -     OK: header=1, encoding=utf-8
+2026-02-04 20:05:04,822 - INFO -     SUCURSAL_8: 471 filas, 9 columnas
+2026-02-04 20:05:04,823 - INFO - 
+Total extraido: 2775 filas
+2026-02-04 20:05:04,823 - INFO - 
+============================================================
+2026-02-04 20:05:04,823 - INFO - FASE 2: NORMALIZACION DE COLUMNAS (Fuzzy Detection)
+2026-02-04 20:05:04,823 - INFO - ============================================================
+2026-02-04 20:05:04,823 - INFO -   Columnas originales: ['        Artículo           ', '   Talle   ', '   Color   ', '              Descripción                      ', 'Cantidad', '  Precio   ', '  Total Precio  ', 'Stock Actual', 'Sucursal']
+2026-02-04 20:05:04,824 - INFO -   Mapeo aplicado: {'Articulo': 'Articulo', 'Descripcion': 'Descripcion', 'Cantidad': 'Cantidad', 'Precio': 'Precio', 'Total Precio': 'Total_precio'}
+2026-02-04 20:05:04,824 - INFO -   Columnas normalizadas: ['Articulo', 'Talle', 'Color', 'Descripcion', 'Cantidad', 'Precio', 'Total_precio', 'Stock Actual', 'Sucursal']
+2026-02-04 20:05:04,824 - INFO -   OK: Columna 'Articulo' verificada correctamente
+2026-02-04 20:05:04,824 - INFO - 
+============================================================
+2026-02-04 20:05:04,824 - INFO - FASE 3: LIMPIEZA (Deteccion Flexible)
+2026-02-04 20:05:04,824 - INFO - ============================================================
+2026-02-04 20:05:04,824 - INFO - Columnas disponibles: ['Articulo', 'Talle', 'Color', 'Descripcion', 'Cantidad', 'Precio', 'Total_precio', 'Stock Actual', 'Sucursal']
+2026-02-04 20:05:04,825 - INFO -   OK Columna de total detectada como: 'Total_precio'
+2026-02-04 20:05:04,825 - INFO -   OK Columna 'Cantidad' convertida a numerico
+2026-02-04 20:05:04,826 - INFO -   OK Columna 'Precio' convertida a numerico
+2026-02-04 20:05:04,828 - INFO -   Filas con Articulo vacio eliminadas: 8
+2026-02-04 20:05:04,838 - WARNING -   FILTRO PARETO: 9 filas de TOTAL/SUBTOTAL eliminadas
+2026-02-04 20:05:04,838 - INFO -   (Estas filas distorsionaban el calculo de Pareto)
+2026-02-04 20:05:04,838 - INFO - 
+Total limpio: 2758 filas
+2026-02-04 20:05:04,839 - INFO - Columnas finales: ['Articulo', 'Talle', 'Color', 'Descripcion', 'Cantidad', 'Precio', 'Total_precio', 'Stock Actual', 'Sucursal', 'Venta_Neta']
+2026-02-04 20:05:04,839 - INFO - 
+============================================================
+2026-02-04 20:05:04,839 - INFO - FASE 4: TRANSFORMACION - ANALISIS PARETO (Data Engineering)
+2026-02-04 20:05:04,839 - INFO - ============================================================
+2026-02-04 20:05:04,839 - INFO -   Columnas disponibles: ['Articulo', 'Talle', 'Color', 'Descripcion', 'Cantidad', 'Precio', 'Total_precio', 'Stock Actual', 'Sucursal', 'Venta_Neta']
+2026-02-04 20:05:04,839 - INFO - 
+  PASO 1: Calculo Maestro (nivel empresa)...
+2026-02-04 20:05:04,843 - INFO -     Articulos con venta positiva: 454
+2026-02-04 20:05:04,843 - INFO -     Facturacion total empresa: $309,550,458.08
+2026-02-04 20:05:04,844 - INFO - 
+  CLASIFICACION ABC GLOBAL:
+2026-02-04 20:05:04,844 - INFO -   ==================================================
+2026-02-04 20:05:04,844 - INFO -   Clase A (80%):    92 articulos (20.3% del catalogo)
+2026-02-04 20:05:04,844 - INFO -   Clase B (95%):   147 articulos (32.4% del catalogo)
+2026-02-04 20:05:04,844 - INFO -   Clase C (100%):  215 articulos (47.4% del catalogo)
+2026-02-04 20:05:04,844 - INFO -   ==================================================
+2026-02-04 20:05:04,844 - INFO - 
+  PASO 2: Detalle por Sucursal...
+2026-02-04 20:05:04,848 - INFO -     Combinaciones Articulo-Sucursal: 1218
+2026-02-04 20:05:04,848 - INFO -     Sucursales: 9
+2026-02-04 20:05:04,848 - INFO - 
+  PASO 3: Merge (Maestro + Detalle)...
+2026-02-04 20:05:04,850 - INFO -     Filas en resultado final: 1211
+2026-02-04 20:05:04,852 - INFO - 
+  TOP 5 ARTICULOS (Ranking Global):
+2026-02-04 20:05:04,852 - INFO -     #1: 26110 CAMISA CAMELIA - $16,307,335 (5.27%) [A]
+2026-02-04 20:05:04,852 - INFO -     #2: 26419 CHAQUETA SILENE - $8,546,480 (2.76%) [A]
+2026-02-04 20:05:04,852 - INFO -     #3: 26209 PANTALON NARCISO - $7,735,641 (2.5%) [A]
+2026-02-04 20:05:04,852 - INFO -     #4: 26207 PANTALON FRESIA - $7,283,656 (2.35%) [A]
+2026-02-04 20:05:04,852 - INFO -     #5: 26203 PANTALON SILENE - $6,622,560 (2.14%) [A]
+2026-02-04 20:05:04,852 - INFO - 
+  MODELO ESTRELLA (Star Schema):
+2026-02-04 20:05:04,853 - INFO -     dim_articulos: 454 filas (1 por articulo)
+2026-02-04 20:05:04,856 - INFO -     fact_ventas: 1211 filas (Articulo x Sucursal)
+2026-02-04 20:05:04,856 - INFO -     Integridad referencial: OK
+2026-02-04 20:05:04,856 - INFO - 
+============================================================
+2026-02-04 20:05:04,856 - INFO - FASE 5: CARGA - MODELO ESTRELLA (Star Schema)
+2026-02-04 20:05:04,856 - INFO - ============================================================
+2026-02-04 20:05:04,860 - INFO - 
+  DIMENSION: dim_articulos.csv
+2026-02-04 20:05:04,860 - INFO -     Filas: 454
+2026-02-04 20:05:04,860 - INFO -     Columnas: ['Articulo', 'Descripcion', 'Ranking', 'Clasificacion_ABC', 'Venta_Total_Articulo', 'Porcentaje_Articulo_Global', 'Porcentaje_Acumulado']
+2026-02-04 20:05:04,860 - INFO -     Clave primaria: Articulo
+2026-02-04 20:05:04,863 - INFO - 
+  HECHOS: fact_ventas.csv
+2026-02-04 20:05:04,863 - INFO -     Filas: 1211
+2026-02-04 20:05:04,863 - INFO -     Columnas: ['Articulo', 'Sucursal', 'Venta_Sucursal', 'Cantidad_Sucursal']
+2026-02-04 20:05:04,863 - INFO -     Clave foranea: Articulo -> dim_articulos
+2026-02-04 20:05:04,863 - INFO - 
+  RELACION EN POWER BI:
+2026-02-04 20:05:04,863 - INFO -   fact_ventas[Articulo] ---> dim_articulos[Articulo]
+2026-02-04 20:05:04,863 - INFO -   (Muchos a Uno, direccion: Ambas)
+2026-02-04 20:05:04,863 - INFO - 
+############################################################
+2026-02-04 20:05:04,863 - INFO - PIPELINE COMPLETADO EXITOSAMENTE
+2026-02-04 20:05:04,864 - INFO - Archivos generados:
+2026-02-04 20:05:04,864 - INFO -   - dim_articulos.csv (Dimension)
+2026-02-04 20:05:04,864 - INFO -   - fact_ventas.csv (Hechos)
+2026-02-04 20:05:04,864 - INFO - ############################################################
+2026-02-05 08:58:43,434 - INFO - 
+############################################################
+2026-02-05 08:58:43,435 - INFO - DATA CLEANING PIPELINE - MODELO ESTRELLA
+2026-02-05 08:58:43,435 - INFO - ############################################################
+2026-02-05 08:58:43,435 - INFO - 
+============================================================
+2026-02-05 08:58:43,435 - INFO - FASE 1: EXTRACCION (Smart Header Detection)
+2026-02-05 08:58:43,436 - INFO - ============================================================
+2026-02-05 08:58:43,436 - INFO - Archivos encontrados: 9
+2026-02-05 08:58:43,436 - INFO - 
+  Procesando: online.csv
+2026-02-05 08:58:43,452 - INFO -     OK: header=1, encoding=utf-8
+2026-02-05 08:58:43,454 - INFO -     ONLINE: 199 filas, 9 columnas
+2026-02-05 08:58:43,454 - INFO - 
+  Procesando: sucursal_1.csv
+2026-02-05 08:58:43,465 - INFO -     OK: header=1, encoding=utf-8
+2026-02-05 08:58:43,465 - INFO -     SUCURSAL_1: 324 filas, 9 columnas
+2026-02-05 08:58:43,465 - INFO - 
+  Procesando: sucursal_2.csv
+2026-02-05 08:58:43,477 - INFO -     OK: header=1, encoding=utf-8
+2026-02-05 08:58:43,477 - INFO -     SUCURSAL_2: 314 filas, 9 columnas
+2026-02-05 08:58:43,477 - INFO - 
+  Procesando: sucursal_3.csv
+2026-02-05 08:58:43,489 - INFO -     OK: header=1, encoding=utf-8
+2026-02-05 08:58:43,489 - INFO -     SUCURSAL_3: 331 filas, 9 columnas
+2026-02-05 08:58:43,490 - INFO - 
+  Procesando: sucursal_4.csv
+2026-02-05 08:58:43,500 - INFO -     OK: header=1, encoding=utf-8
+2026-02-05 08:58:43,500 - INFO -     SUCURSAL_4: 221 filas, 9 columnas
+2026-02-05 08:58:43,500 - INFO - 
+  Procesando: sucursal_5.csv
+2026-02-05 08:58:43,513 - INFO -     OK: header=1, encoding=utf-8
+2026-02-05 08:58:43,514 - INFO -     SUCURSAL_5: 297 filas, 9 columnas
+2026-02-05 08:58:43,514 - INFO - 
+  Procesando: sucursal_6.csv
+2026-02-05 08:58:43,526 - INFO -     OK: header=1, encoding=utf-8
+2026-02-05 08:58:43,526 - INFO -     SUCURSAL_6: 337 filas, 9 columnas
+2026-02-05 08:58:43,526 - INFO - 
+  Procesando: sucursal_7.csv
+2026-02-05 08:58:43,538 - INFO -     OK: header=1, encoding=utf-8
+2026-02-05 08:58:43,538 - INFO -     SUCURSAL_7: 281 filas, 9 columnas
+2026-02-05 08:58:43,538 - INFO - 
+  Procesando: sucursal_8.csv
+2026-02-05 08:58:43,550 - INFO -     OK: header=1, encoding=utf-8
+2026-02-05 08:58:43,550 - INFO -     SUCURSAL_8: 471 filas, 9 columnas
+2026-02-05 08:58:43,551 - INFO - 
+Total extraido: 2775 filas
+2026-02-05 08:58:43,551 - INFO - 
+============================================================
+2026-02-05 08:58:43,551 - INFO - FASE 2: NORMALIZACION DE COLUMNAS (Fuzzy Detection)
+2026-02-05 08:58:43,551 - INFO - ============================================================
+2026-02-05 08:58:43,551 - INFO -   Columnas originales: ['        Artículo           ', '   Talle   ', '   Color   ', '              Descripción                      ', 'Cantidad', '  Precio   ', '  Total Precio  ', 'Stock Actual', 'Sucursal']
+2026-02-05 08:58:43,553 - INFO -   Mapeo aplicado: {'Articulo': 'Articulo', 'Descripcion': 'Descripcion', 'Cantidad': 'Cantidad', 'Precio': 'Precio', 'Total Precio': 'Total_precio'}
+2026-02-05 08:58:43,553 - INFO -   Columnas normalizadas: ['Articulo', 'Talle', 'Color', 'Descripcion', 'Cantidad', 'Precio', 'Total_precio', 'Stock Actual', 'Sucursal']
+2026-02-05 08:58:43,553 - INFO -   OK: Columna 'Articulo' verificada correctamente
+2026-02-05 08:58:43,554 - INFO - 
+============================================================
+2026-02-05 08:58:43,554 - INFO - FASE 3: LIMPIEZA (Deteccion Flexible)
+2026-02-05 08:58:43,554 - INFO - ============================================================
+2026-02-05 08:58:43,554 - INFO - Columnas disponibles: ['Articulo', 'Talle', 'Color', 'Descripcion', 'Cantidad', 'Precio', 'Total_precio', 'Stock Actual', 'Sucursal']
+2026-02-05 08:58:43,554 - INFO -   OK Columna de total detectada como: 'Total_precio'
+2026-02-05 08:58:43,555 - INFO -   OK Columna 'Cantidad' convertida a numerico
+2026-02-05 08:58:43,555 - INFO -   OK Columna 'Precio' convertida a numerico
+2026-02-05 08:58:43,559 - INFO -   Filas con Articulo vacio eliminadas: 8
+2026-02-05 08:58:43,568 - WARNING -   FILTRO PARETO: 9 filas de TOTAL/SUBTOTAL eliminadas
+2026-02-05 08:58:43,568 - INFO -   (Estas filas distorsionaban el calculo de Pareto)
+2026-02-05 08:58:43,568 - INFO - 
+Total limpio: 2758 filas
+2026-02-05 08:58:43,568 - INFO - Columnas finales: ['Articulo', 'Talle', 'Color', 'Descripcion', 'Cantidad', 'Precio', 'Total_precio', 'Stock Actual', 'Sucursal', 'Venta_Neta']
+2026-02-05 08:58:43,568 - INFO - 
+============================================================
+2026-02-05 08:58:43,568 - INFO - FASE 4: TRANSFORMACION - ANALISIS PARETO (Data Engineering)
+2026-02-05 08:58:43,568 - INFO - ============================================================
+2026-02-05 08:58:43,568 - INFO -   Columnas disponibles: ['Articulo', 'Talle', 'Color', 'Descripcion', 'Cantidad', 'Precio', 'Total_precio', 'Stock Actual', 'Sucursal', 'Venta_Neta']
+2026-02-05 08:58:43,568 - INFO - 
+  PASO 1: Calculo Maestro (nivel empresa)...
+2026-02-05 08:58:43,573 - INFO -     Articulos con venta positiva: 454
+2026-02-05 08:58:43,573 - INFO -     Facturacion total empresa: $309,550,458.08
+2026-02-05 08:58:43,574 - INFO - 
+  CLASIFICACION ABC GLOBAL:
+2026-02-05 08:58:43,574 - INFO -   ==================================================
+2026-02-05 08:58:43,574 - INFO -   Clase A (80%):    92 articulos (20.3% del catalogo)
+2026-02-05 08:58:43,574 - INFO -   Clase B (95%):   147 articulos (32.4% del catalogo)
+2026-02-05 08:58:43,574 - INFO -   Clase C (100%):  215 articulos (47.4% del catalogo)
+2026-02-05 08:58:43,574 - INFO -   ==================================================
+2026-02-05 08:58:43,574 - INFO - 
+  PASO 2: Detalle por Sucursal...
+2026-02-05 08:58:43,579 - INFO -     Combinaciones Articulo-Sucursal: 1218
+2026-02-05 08:58:43,579 - INFO -     Sucursales: 9
+2026-02-05 08:58:43,579 - INFO - 
+  PASO 3: Merge (Maestro + Detalle)...
+2026-02-05 08:58:43,583 - INFO -     Filas en resultado final: 1211
+2026-02-05 08:58:43,585 - INFO - 
+  TOP 5 ARTICULOS (Ranking Global):
+2026-02-05 08:58:43,586 - INFO -     #1: 26110 CAMISA CAMELIA - $16,307,335 (5.27%) [A]
+2026-02-05 08:58:43,586 - INFO -     #2: 26419 CHAQUETA SILENE - $8,546,480 (2.76%) [A]
+2026-02-05 08:58:43,586 - INFO -     #3: 26209 PANTALON NARCISO - $7,735,641 (2.5%) [A]
+2026-02-05 08:58:43,586 - INFO -     #4: 26207 PANTALON FRESIA - $7,283,656 (2.35%) [A]
+2026-02-05 08:58:43,586 - INFO -     #5: 26203 PANTALON SILENE - $6,622,560 (2.14%) [A]
+2026-02-05 08:58:43,586 - INFO - 
+  MODELO ESTRELLA (Star Schema):
+2026-02-05 08:58:43,587 - INFO -     dim_articulos: 454 filas (1 por articulo)
+2026-02-05 08:58:43,589 - INFO -     fact_ventas: 1211 filas (Articulo x Sucursal)
+2026-02-05 08:58:43,589 - INFO -     Integridad referencial: OK
+2026-02-05 08:58:43,589 - INFO - 
+============================================================
+2026-02-05 08:58:43,589 - INFO - FASE 5: CARGA - MODELO ESTRELLA (Star Schema)
+2026-02-05 08:58:43,589 - INFO - ============================================================
+2026-02-05 08:58:43,590 - INFO - 
+  Formato CSV: Excel-Spanish (sep=';', decimal=',')
+2026-02-05 08:58:43,595 - INFO - 
+  DIMENSION: dim_articulos.csv
+2026-02-05 08:58:43,595 - INFO -     Filas: 454
+2026-02-05 08:58:43,595 - INFO -     Columnas: ['Articulo', 'Descripcion', 'Ranking', 'Clasificacion_ABC', 'Venta_Total_Articulo', 'Porcentaje_Articulo_Global', 'Porcentaje_Acumulado']
+2026-02-05 08:58:43,595 - INFO -     Clave primaria: Articulo
+2026-02-05 08:58:43,597 - INFO - 
+  DIMENSION: dim_sucursales.csv
+2026-02-05 08:58:43,597 - INFO -     Filas: 9
+2026-02-05 08:58:43,597 - INFO -     Columnas: ['Sucursal', 'Tipo']
+2026-02-05 08:58:43,597 - INFO -     Clave primaria: Sucursal
+2026-02-05 08:58:43,601 - INFO - 
+  HECHOS: fact_ventas.csv
+2026-02-05 08:58:43,601 - INFO -     Filas: 1211
+2026-02-05 08:58:43,601 - INFO -     Columnas: ['Articulo', 'Sucursal', 'Venta_Sucursal', 'Cantidad_Sucursal']
+2026-02-05 08:58:43,601 - INFO -     Claves foraneas:
+2026-02-05 08:58:43,602 - INFO -       - Articulo -> dim_articulos
+2026-02-05 08:58:43,602 - INFO -       - Sucursal -> dim_sucursales
+2026-02-05 08:58:43,602 - INFO - 
+  RELACIONES EN POWER BI:
+2026-02-05 08:58:43,602 - INFO -   fact_ventas[Articulo] ---> dim_articulos[Articulo]
+2026-02-05 08:58:43,602 - INFO -   fact_ventas[Sucursal] ---> dim_sucursales[Sucursal]
+2026-02-05 08:58:43,602 - INFO -   (Muchos a Uno, direccion: Ambas)
+2026-02-05 08:58:43,602 - INFO - 
+############################################################
+2026-02-05 08:58:43,602 - INFO - PIPELINE COMPLETADO EXITOSAMENTE
+2026-02-05 08:58:43,602 - INFO - Archivos generados (formato Excel-Spanish):
+2026-02-05 08:58:43,602 - INFO -   - dim_articulos.csv (Dimension Articulos)
+2026-02-05 08:58:43,602 - INFO -   - dim_sucursales.csv (Dimension Sucursales)
+2026-02-05 08:58:43,602 - INFO -   - fact_ventas.csv (Tabla de Hechos)
+2026-02-05 08:58:43,602 - INFO - ############################################################
+2026-02-05 08:59:11,742 - INFO - 
+############################################################
+2026-02-05 08:59:11,742 - INFO - DATA CLEANING PIPELINE - MODELO ESTRELLA
+2026-02-05 08:59:11,743 - INFO - ############################################################
+2026-02-05 08:59:11,743 - INFO - 
+============================================================
+2026-02-05 08:59:11,743 - INFO - FASE 1: EXTRACCION (Smart Header Detection)
+2026-02-05 08:59:11,743 - INFO - ============================================================
+2026-02-05 08:59:11,744 - INFO - Archivos encontrados: 9
+2026-02-05 08:59:11,744 - INFO - 
+  Procesando: online.csv
+2026-02-05 08:59:11,749 - INFO -     OK: header=1, encoding=utf-8
+2026-02-05 08:59:11,749 - INFO -     ONLINE: 199 filas, 9 columnas
+2026-02-05 08:59:11,750 - INFO - 
+  Procesando: sucursal_1.csv
+2026-02-05 08:59:11,754 - INFO -     OK: header=1, encoding=utf-8
+2026-02-05 08:59:11,754 - INFO -     SUCURSAL_1: 324 filas, 9 columnas
+2026-02-05 08:59:11,755 - INFO - 
+  Procesando: sucursal_2.csv
+2026-02-05 08:59:11,759 - INFO -     OK: header=1, encoding=utf-8
+2026-02-05 08:59:11,759 - INFO -     SUCURSAL_2: 314 filas, 9 columnas
+2026-02-05 08:59:11,760 - INFO - 
+  Procesando: sucursal_3.csv
+2026-02-05 08:59:11,763 - INFO -     OK: header=1, encoding=utf-8
+2026-02-05 08:59:11,764 - INFO -     SUCURSAL_3: 331 filas, 9 columnas
+2026-02-05 08:59:11,764 - INFO - 
+  Procesando: sucursal_4.csv
+2026-02-05 08:59:11,768 - INFO -     OK: header=1, encoding=utf-8
+2026-02-05 08:59:11,769 - INFO -     SUCURSAL_4: 221 filas, 9 columnas
+2026-02-05 08:59:11,769 - INFO - 
+  Procesando: sucursal_5.csv
+2026-02-05 08:59:11,773 - INFO -     OK: header=1, encoding=utf-8
+2026-02-05 08:59:11,774 - INFO -     SUCURSAL_5: 297 filas, 9 columnas
+2026-02-05 08:59:11,774 - INFO - 
+  Procesando: sucursal_6.csv
+2026-02-05 08:59:11,780 - INFO -     OK: header=1, encoding=utf-8
+2026-02-05 08:59:11,781 - INFO -     SUCURSAL_6: 337 filas, 9 columnas
+2026-02-05 08:59:11,781 - INFO - 
+  Procesando: sucursal_7.csv
+2026-02-05 08:59:11,785 - INFO -     OK: header=1, encoding=utf-8
+2026-02-05 08:59:11,785 - INFO -     SUCURSAL_7: 281 filas, 9 columnas
+2026-02-05 08:59:11,786 - INFO - 
+  Procesando: sucursal_8.csv
+2026-02-05 08:59:11,790 - INFO -     OK: header=1, encoding=utf-8
+2026-02-05 08:59:11,790 - INFO -     SUCURSAL_8: 471 filas, 9 columnas
+2026-02-05 08:59:11,793 - INFO - 
+Total extraido: 2775 filas
+2026-02-05 08:59:11,793 - INFO - 
+============================================================
+2026-02-05 08:59:11,794 - INFO - FASE 2: NORMALIZACION DE COLUMNAS (Fuzzy Detection)
+2026-02-05 08:59:11,794 - INFO - ============================================================
+2026-02-05 08:59:11,794 - INFO -   Columnas originales: ['        Artículo           ', '   Talle   ', '   Color   ', '              Descripción                      ', 'Cantidad', '  Precio   ', '  Total Precio  ', 'Stock Actual', 'Sucursal']
+2026-02-05 08:59:11,796 - INFO -   Mapeo aplicado: {'Articulo': 'Articulo', 'Descripcion': 'Descripcion', 'Cantidad': 'Cantidad', 'Precio': 'Precio', 'Total Precio': 'Total_precio'}
+2026-02-05 08:59:11,797 - INFO -   Columnas normalizadas: ['Articulo', 'Talle', 'Color', 'Descripcion', 'Cantidad', 'Precio', 'Total_precio', 'Stock Actual', 'Sucursal']
+2026-02-05 08:59:11,797 - INFO -   OK: Columna 'Articulo' verificada correctamente
+2026-02-05 08:59:11,797 - INFO - 
+============================================================
+2026-02-05 08:59:11,798 - INFO - FASE 3: LIMPIEZA (Deteccion Flexible)
+2026-02-05 08:59:11,798 - INFO - ============================================================
+2026-02-05 08:59:11,798 - INFO - Columnas disponibles: ['Articulo', 'Talle', 'Color', 'Descripcion', 'Cantidad', 'Precio', 'Total_precio', 'Stock Actual', 'Sucursal']
+2026-02-05 08:59:11,799 - INFO -   OK Columna de total detectada como: 'Total_precio'
+2026-02-05 08:59:11,799 - INFO -   OK Columna 'Cantidad' convertida a numerico
+2026-02-05 08:59:11,800 - INFO -   OK Columna 'Precio' convertida a numerico
+2026-02-05 08:59:11,802 - INFO -   Filas con Articulo vacio eliminadas: 8
+2026-02-05 08:59:11,814 - WARNING -   FILTRO PARETO: 9 filas de TOTAL/SUBTOTAL eliminadas
+2026-02-05 08:59:11,814 - INFO -   (Estas filas distorsionaban el calculo de Pareto)
+2026-02-05 08:59:11,814 - INFO - 
+Total limpio: 2758 filas
+2026-02-05 08:59:11,814 - INFO - Columnas finales: ['Articulo', 'Talle', 'Color', 'Descripcion', 'Cantidad', 'Precio', 'Total_precio', 'Stock Actual', 'Sucursal', 'Venta_Neta']
+2026-02-05 08:59:11,815 - INFO - 
+============================================================
+2026-02-05 08:59:11,815 - INFO - FASE 4: TRANSFORMACION - ANALISIS PARETO (Data Engineering)
+2026-02-05 08:59:11,815 - INFO - ============================================================
+2026-02-05 08:59:11,815 - INFO -   Columnas disponibles: ['Articulo', 'Talle', 'Color', 'Descripcion', 'Cantidad', 'Precio', 'Total_precio', 'Stock Actual', 'Sucursal', 'Venta_Neta']
+2026-02-05 08:59:11,815 - INFO - 
+  PASO 1: Calculo Maestro (nivel empresa)...
+2026-02-05 08:59:11,822 - INFO -     Articulos con venta positiva: 454
+2026-02-05 08:59:11,823 - INFO -     Facturacion total empresa: $309,550,458.08
+2026-02-05 08:59:11,824 - INFO - 
+  CLASIFICACION ABC GLOBAL:
+2026-02-05 08:59:11,824 - INFO -   ==================================================
+2026-02-05 08:59:11,824 - INFO -   Clase A (80%):    92 articulos (20.3% del catalogo)
+2026-02-05 08:59:11,824 - INFO -   Clase B (95%):   147 articulos (32.4% del catalogo)
+2026-02-05 08:59:11,824 - INFO -   Clase C (100%):  215 articulos (47.4% del catalogo)
+2026-02-05 08:59:11,824 - INFO -   ==================================================
+2026-02-05 08:59:11,825 - INFO - 
+  PASO 2: Detalle por Sucursal...
+2026-02-05 08:59:11,828 - INFO -     Combinaciones Articulo-Sucursal: 1218
+2026-02-05 08:59:11,829 - INFO -     Sucursales: 9
+2026-02-05 08:59:11,829 - INFO - 
+  PASO 3: Merge (Maestro + Detalle)...
+2026-02-05 08:59:11,831 - INFO -     Filas en resultado final: 1211
+2026-02-05 08:59:11,833 - INFO - 
+  TOP 5 ARTICULOS (Ranking Global):
+2026-02-05 08:59:11,834 - INFO -     #1: 26110 CAMISA CAMELIA - $16,307,335 (5.27%) [A]
+2026-02-05 08:59:11,834 - INFO -     #2: 26419 CHAQUETA SILENE - $8,546,480 (2.76%) [A]
+2026-02-05 08:59:11,834 - INFO -     #3: 26209 PANTALON NARCISO - $7,735,641 (2.5%) [A]
+2026-02-05 08:59:11,835 - INFO -     #4: 26207 PANTALON FRESIA - $7,283,656 (2.35%) [A]
+2026-02-05 08:59:11,835 - INFO -     #5: 26203 PANTALON SILENE - $6,622,560 (2.14%) [A]
+2026-02-05 08:59:11,835 - INFO - 
+  MODELO ESTRELLA (Star Schema):
+2026-02-05 08:59:11,836 - INFO -     dim_articulos: 454 filas (1 por articulo)
+2026-02-05 08:59:11,837 - INFO -     fact_ventas: 1211 filas (Articulo x Sucursal)
+2026-02-05 08:59:11,837 - INFO -     Integridad referencial: OK
+2026-02-05 08:59:11,837 - INFO - 
+============================================================
+2026-02-05 08:59:11,837 - INFO - FASE 5: CARGA - MODELO ESTRELLA (Star Schema)
+2026-02-05 08:59:11,837 - INFO - ============================================================
+2026-02-05 08:59:11,838 - INFO - 
+  Formato CSV: Excel-Spanish (sep=';', decimal=',')
+2026-02-05 08:59:11,844 - INFO - 
+  DIMENSION: dim_articulos.csv
+2026-02-05 08:59:11,844 - INFO -     Filas: 454
+2026-02-05 08:59:11,844 - INFO -     Columnas: ['Articulo', 'Descripcion', 'Ranking', 'Clasificacion_ABC', 'Venta_Total_Articulo', 'Porcentaje_Articulo_Global', 'Porcentaje_Acumulado']
+2026-02-05 08:59:11,844 - INFO -     Clave primaria: Articulo
+2026-02-05 08:59:11,847 - INFO - 
+  DIMENSION: dim_sucursales.csv
+2026-02-05 08:59:11,847 - INFO -     Filas: 9
+2026-02-05 08:59:11,847 - INFO -     Columnas: ['Sucursal', 'Tipo']
+2026-02-05 08:59:11,848 - INFO -     Clave primaria: Sucursal
+2026-02-05 08:59:11,853 - INFO - 
+  HECHOS: fact_ventas.csv
+2026-02-05 08:59:11,854 - INFO -     Filas: 1211
+2026-02-05 08:59:11,854 - INFO -     Columnas: ['Articulo', 'Sucursal', 'Venta_Sucursal', 'Cantidad_Sucursal']
+2026-02-05 08:59:11,854 - INFO -     Claves foraneas:
+2026-02-05 08:59:11,854 - INFO -       - Articulo -> dim_articulos
+2026-02-05 08:59:11,854 - INFO -       - Sucursal -> dim_sucursales
+2026-02-05 08:59:11,855 - INFO - 
+  RELACIONES EN POWER BI:
+2026-02-05 08:59:11,855 - INFO -   fact_ventas[Articulo] ---> dim_articulos[Articulo]
+2026-02-05 08:59:11,855 - INFO -   fact_ventas[Sucursal] ---> dim_sucursales[Sucursal]
+2026-02-05 08:59:11,855 - INFO -   (Muchos a Uno, direccion: Ambas)
+2026-02-05 08:59:11,855 - INFO - 
+############################################################
+2026-02-05 08:59:11,855 - INFO - PIPELINE COMPLETADO EXITOSAMENTE
+2026-02-05 08:59:11,855 - INFO - Archivos generados (formato Excel-Spanish):
+2026-02-05 08:59:11,855 - INFO -   - dim_articulos.csv (Dimension Articulos)
+2026-02-05 08:59:11,856 - INFO -   - dim_sucursales.csv (Dimension Sucursales)
+2026-02-05 08:59:11,856 - INFO -   - fact_ventas.csv (Tabla de Hechos)
+2026-02-05 08:59:11,856 - INFO - ############################################################
+2026-02-05 09:07:26,511 - INFO - 
+############################################################
+2026-02-05 09:07:26,511 - INFO - DATA CLEANING PIPELINE - MODELO ESTRELLA
+2026-02-05 09:07:26,511 - INFO - ############################################################
+2026-02-05 09:07:26,511 - INFO - 
+============================================================
+2026-02-05 09:07:26,511 - INFO - FASE 1: EXTRACCION (Smart Header Detection)
+2026-02-05 09:07:26,512 - INFO - ============================================================
+2026-02-05 09:07:26,512 - INFO - Archivos encontrados: 9
+2026-02-05 09:07:26,512 - INFO - 
+  Procesando: online.csv
+2026-02-05 09:07:26,517 - INFO -     OK: header=1, encoding=utf-8
+2026-02-05 09:07:26,517 - INFO -     ONLINE: 199 filas, 9 columnas
+2026-02-05 09:07:26,518 - INFO - 
+  Procesando: sucursal_1.csv
+2026-02-05 09:07:26,520 - INFO -     OK: header=1, encoding=utf-8
+2026-02-05 09:07:26,520 - INFO -     SUCURSAL_1: 324 filas, 9 columnas
+2026-02-05 09:07:26,520 - INFO - 
+  Procesando: sucursal_2.csv
+2026-02-05 09:07:26,523 - INFO -     OK: header=1, encoding=utf-8
+2026-02-05 09:07:26,523 - INFO -     SUCURSAL_2: 314 filas, 9 columnas
+2026-02-05 09:07:26,524 - INFO - 
+  Procesando: sucursal_3.csv
+2026-02-05 09:07:26,526 - INFO -     OK: header=1, encoding=utf-8
+2026-02-05 09:07:26,526 - INFO -     SUCURSAL_3: 331 filas, 9 columnas
+2026-02-05 09:07:26,527 - INFO - 
+  Procesando: sucursal_4.csv
+2026-02-05 09:07:26,529 - INFO -     OK: header=1, encoding=utf-8
+2026-02-05 09:07:26,529 - INFO -     SUCURSAL_4: 221 filas, 9 columnas
+2026-02-05 09:07:26,529 - INFO - 
+  Procesando: sucursal_5.csv
+2026-02-05 09:07:26,532 - INFO -     OK: header=1, encoding=utf-8
+2026-02-05 09:07:26,532 - INFO -     SUCURSAL_5: 297 filas, 9 columnas
+2026-02-05 09:07:26,532 - INFO - 
+  Procesando: sucursal_6.csv
+2026-02-05 09:07:26,535 - INFO -     OK: header=1, encoding=utf-8
+2026-02-05 09:07:26,535 - INFO -     SUCURSAL_6: 337 filas, 9 columnas
+2026-02-05 09:07:26,535 - INFO - 
+  Procesando: sucursal_7.csv
+2026-02-05 09:07:26,537 - INFO -     OK: header=1, encoding=utf-8
+2026-02-05 09:07:26,538 - INFO -     SUCURSAL_7: 281 filas, 9 columnas
+2026-02-05 09:07:26,538 - INFO - 
+  Procesando: sucursal_8.csv
+2026-02-05 09:07:26,542 - INFO -     OK: header=1, encoding=utf-8
+2026-02-05 09:07:26,542 - INFO -     SUCURSAL_8: 471 filas, 9 columnas
+2026-02-05 09:07:26,544 - INFO - 
+Total extraido: 2775 filas
+2026-02-05 09:07:26,544 - INFO - 
+============================================================
+2026-02-05 09:07:26,544 - INFO - FASE 2: NORMALIZACION DE COLUMNAS (Fuzzy Detection)
+2026-02-05 09:07:26,544 - INFO - ============================================================
+2026-02-05 09:07:26,544 - INFO -   Columnas originales: ['        Artículo           ', '   Talle   ', '   Color   ', '              Descripción                      ', 'Cantidad', '  Precio   ', '  Total Precio  ', 'Stock Actual', 'Sucursal']
+2026-02-05 09:07:26,545 - INFO -   Mapeo aplicado: {'Articulo': 'Articulo', 'Descripcion': 'Descripcion', 'Cantidad': 'Cantidad', 'Precio': 'Precio', 'Total Precio': 'Total_precio'}
+2026-02-05 09:07:26,545 - INFO -   Columnas normalizadas: ['Articulo', 'Talle', 'Color', 'Descripcion', 'Cantidad', 'Precio', 'Total_precio', 'Stock Actual', 'Sucursal']
+2026-02-05 09:07:26,545 - INFO -   OK: Columna 'Articulo' verificada correctamente
+2026-02-05 09:07:26,545 - INFO - 
+============================================================
+2026-02-05 09:07:26,545 - INFO - FASE 3: LIMPIEZA (Deteccion Flexible)
+2026-02-05 09:07:26,545 - INFO - ============================================================
+2026-02-05 09:07:26,545 - INFO - Columnas disponibles: ['Articulo', 'Talle', 'Color', 'Descripcion', 'Cantidad', 'Precio', 'Total_precio', 'Stock Actual', 'Sucursal']
+2026-02-05 09:07:26,545 - INFO -   OK Columna de total detectada como: 'Total_precio'
+2026-02-05 09:07:26,546 - INFO -   OK Columna 'Cantidad' convertida a numerico
+2026-02-05 09:07:26,546 - INFO -   OK Columna 'Precio' convertida a numerico
+2026-02-05 09:07:26,549 - INFO -   Filas con Articulo vacio eliminadas: 8
+2026-02-05 09:07:26,558 - WARNING -   FILTRO PARETO: 9 filas de TOTAL/SUBTOTAL eliminadas
+2026-02-05 09:07:26,558 - INFO -   (Estas filas distorsionaban el calculo de Pareto)
+2026-02-05 09:07:26,558 - INFO - 
+Total limpio: 2758 filas
+2026-02-05 09:07:26,558 - INFO - Columnas finales: ['Articulo', 'Talle', 'Color', 'Descripcion', 'Cantidad', 'Precio', 'Total_precio', 'Stock Actual', 'Sucursal', 'Venta_Neta']
+2026-02-05 09:07:26,558 - INFO - 
+============================================================
+2026-02-05 09:07:26,558 - INFO - FASE 4: TRANSFORMACION - ANALISIS PARETO (Data Engineering)
+2026-02-05 09:07:26,558 - INFO - ============================================================
+2026-02-05 09:07:26,559 - INFO -   Columnas disponibles: ['Articulo', 'Talle', 'Color', 'Descripcion', 'Cantidad', 'Precio', 'Total_precio', 'Stock Actual', 'Sucursal', 'Venta_Neta']
+2026-02-05 09:07:26,559 - INFO - 
+  PASO 1: Calculo Maestro (nivel empresa)...
+2026-02-05 09:07:26,563 - INFO -     Articulos con venta positiva: 454
+2026-02-05 09:07:26,563 - INFO -     Facturacion total empresa: $309,550,458.08
+2026-02-05 09:07:26,564 - INFO - 
+  CLASIFICACION ABC GLOBAL:
+2026-02-05 09:07:26,564 - INFO -   ==================================================
+2026-02-05 09:07:26,564 - INFO -   Clase A (80%):    92 articulos (20.3% del catalogo)
+2026-02-05 09:07:26,564 - INFO -   Clase B (95%):   147 articulos (32.4% del catalogo)
+2026-02-05 09:07:26,564 - INFO -   Clase C (100%):  215 articulos (47.4% del catalogo)
+2026-02-05 09:07:26,564 - INFO -   ==================================================
+2026-02-05 09:07:26,564 - INFO - 
+  PASO 2: Detalle por Sucursal...
+2026-02-05 09:07:26,567 - INFO -     Combinaciones Articulo-Sucursal: 1218
+2026-02-05 09:07:26,567 - INFO -     Sucursales: 9
+2026-02-05 09:07:26,567 - INFO - 
+  PASO 3: Merge (Maestro + Detalle)...
+2026-02-05 09:07:26,569 - INFO -     Filas en resultado final: 1211
+2026-02-05 09:07:26,570 - INFO - 
+  TOP 5 ARTICULOS (Ranking Global):
+2026-02-05 09:07:26,571 - INFO -     #1: 26110 CAMISA CAMELIA - $16,307,335 (5.27%) [A]
+2026-02-05 09:07:26,571 - INFO -     #2: 26419 CHAQUETA SILENE - $8,546,480 (2.76%) [A]
+2026-02-05 09:07:26,571 - INFO -     #3: 26209 PANTALON NARCISO - $7,735,641 (2.50%) [A]
+2026-02-05 09:07:26,571 - INFO -     #4: 26207 PANTALON FRESIA - $7,283,656 (2.35%) [A]
+2026-02-05 09:07:26,571 - INFO -     #5: 26203 PANTALON SILENE - $6,622,560 (2.14%) [A]
+2026-02-05 09:07:26,571 - INFO - 
+  MODELO ESTRELLA (Star Schema):
+2026-02-05 09:07:26,572 - INFO -     dim_articulos: 454 filas (1 por articulo)
+2026-02-05 09:07:26,572 - INFO -     fact_ventas: 1211 filas (Articulo x Sucursal)
+2026-02-05 09:07:26,572 - INFO -     Integridad referencial: OK
+2026-02-05 09:07:26,573 - INFO - 
+============================================================
+2026-02-05 09:07:26,573 - INFO - FASE 5: CARGA - MODELO ESTRELLA (Star Schema)
+2026-02-05 09:07:26,573 - INFO - ============================================================
+2026-02-05 09:07:26,573 - INFO - 
+  Formato CSV: Excel-Spanish (sep=';', decimal=',')
+2026-02-05 09:07:26,578 - INFO - 
+  DIMENSION: dim_articulos.csv
+2026-02-05 09:07:26,578 - INFO -     Filas: 454
+2026-02-05 09:07:26,578 - INFO -     Columnas: ['Articulo', 'Descripcion', 'Ranking', 'Clasificacion_ABC', 'Venta_Total_Articulo', 'Porcentaje_Articulo_Global', 'Porcentaje_Acumulado']
+2026-02-05 09:07:26,578 - INFO -     Clave primaria: Articulo
+2026-02-05 09:07:26,580 - INFO - 
+  DIMENSION: dim_sucursales.csv
+2026-02-05 09:07:26,580 - INFO -     Filas: 9
+2026-02-05 09:07:26,580 - INFO -     Columnas: ['Sucursal', 'Tipo']
+2026-02-05 09:07:26,580 - INFO -     Clave primaria: Sucursal
+2026-02-05 09:07:26,584 - INFO - 
+  HECHOS: fact_ventas.csv
+2026-02-05 09:07:26,584 - INFO -     Filas: 1211
+2026-02-05 09:07:26,584 - INFO -     Columnas: ['Articulo', 'Sucursal', 'Venta_Sucursal', 'Cantidad_Sucursal']
+2026-02-05 09:07:26,584 - INFO -     Claves foraneas:
+2026-02-05 09:07:26,584 - INFO -       - Articulo -> dim_articulos
+2026-02-05 09:07:26,584 - INFO -       - Sucursal -> dim_sucursales
+2026-02-05 09:07:26,584 - INFO - 
+  RELACIONES EN POWER BI:
+2026-02-05 09:07:26,584 - INFO -   fact_ventas[Articulo] ---> dim_articulos[Articulo]
+2026-02-05 09:07:26,584 - INFO -   fact_ventas[Sucursal] ---> dim_sucursales[Sucursal]
+2026-02-05 09:07:26,584 - INFO -   (Muchos a Uno, direccion: Ambas)
+2026-02-05 09:07:26,584 - INFO - 
+############################################################
+2026-02-05 09:07:26,584 - INFO - PIPELINE COMPLETADO EXITOSAMENTE
+2026-02-05 09:07:26,584 - INFO - Archivos generados (formato Excel-Spanish):
+2026-02-05 09:07:26,584 - INFO -   - dim_articulos.csv (Dimension Articulos)
+2026-02-05 09:07:26,584 - INFO -   - dim_sucursales.csv (Dimension Sucursales)
+2026-02-05 09:07:26,584 - INFO -   - fact_ventas.csv (Tabla de Hechos)
+2026-02-05 09:07:26,584 - INFO - ############################################################
+2026-02-05 09:07:55,007 - INFO - 
+############################################################
+2026-02-05 09:07:55,007 - INFO - DATA CLEANING PIPELINE - MODELO ESTRELLA
+2026-02-05 09:07:55,007 - INFO - ############################################################
+2026-02-05 09:07:55,007 - INFO - 
+============================================================
+2026-02-05 09:07:55,008 - INFO - FASE 1: EXTRACCION (Smart Header Detection)
+2026-02-05 09:07:55,008 - INFO - ============================================================
+2026-02-05 09:07:55,008 - INFO - Archivos encontrados: 9
+2026-02-05 09:07:55,008 - INFO - 
+  Procesando: online.csv
+2026-02-05 09:07:55,014 - INFO -     OK: header=1, encoding=utf-8
+2026-02-05 09:07:55,015 - INFO -     ONLINE: 199 filas, 9 columnas
+2026-02-05 09:07:55,015 - INFO - 
+  Procesando: sucursal_1.csv
+2026-02-05 09:07:55,019 - INFO -     OK: header=1, encoding=utf-8
+2026-02-05 09:07:55,019 - INFO -     SUCURSAL_1: 324 filas, 9 columnas
+2026-02-05 09:07:55,019 - INFO - 
+  Procesando: sucursal_2.csv
+2026-02-05 09:07:55,024 - INFO -     OK: header=1, encoding=utf-8
+2026-02-05 09:07:55,025 - INFO -     SUCURSAL_2: 314 filas, 9 columnas
+2026-02-05 09:07:55,025 - INFO - 
+  Procesando: sucursal_3.csv
+2026-02-05 09:07:55,029 - INFO -     OK: header=1, encoding=utf-8
+2026-02-05 09:07:55,030 - INFO -     SUCURSAL_3: 331 filas, 9 columnas
+2026-02-05 09:07:55,031 - INFO - 
+  Procesando: sucursal_4.csv
+2026-02-05 09:07:55,035 - INFO -     OK: header=1, encoding=utf-8
+2026-02-05 09:07:55,036 - INFO -     SUCURSAL_4: 221 filas, 9 columnas
+2026-02-05 09:07:55,037 - INFO - 
+  Procesando: sucursal_5.csv
+2026-02-05 09:07:55,042 - INFO -     OK: header=1, encoding=utf-8
+2026-02-05 09:07:55,043 - INFO -     SUCURSAL_5: 297 filas, 9 columnas
+2026-02-05 09:07:55,043 - INFO - 
+  Procesando: sucursal_6.csv
+2026-02-05 09:07:55,047 - INFO -     OK: header=1, encoding=utf-8
+2026-02-05 09:07:55,048 - INFO -     SUCURSAL_6: 337 filas, 9 columnas
+2026-02-05 09:07:55,048 - INFO - 
+  Procesando: sucursal_7.csv
+2026-02-05 09:07:55,053 - INFO -     OK: header=1, encoding=utf-8
+2026-02-05 09:07:55,053 - INFO -     SUCURSAL_7: 281 filas, 9 columnas
+2026-02-05 09:07:55,053 - INFO - 
+  Procesando: sucursal_8.csv
+2026-02-05 09:07:55,058 - INFO -     OK: header=1, encoding=utf-8
+2026-02-05 09:07:55,059 - INFO -     SUCURSAL_8: 471 filas, 9 columnas
+2026-02-05 09:07:55,060 - INFO - 
+Total extraido: 2775 filas
+2026-02-05 09:07:55,060 - INFO - 
+============================================================
+2026-02-05 09:07:55,060 - INFO - FASE 2: NORMALIZACION DE COLUMNAS (Fuzzy Detection)
+2026-02-05 09:07:55,061 - INFO - ============================================================
+2026-02-05 09:07:55,061 - INFO -   Columnas originales: ['        Artículo           ', '   Talle   ', '   Color   ', '              Descripción                      ', 'Cantidad', '  Precio   ', '  Total Precio  ', 'Stock Actual', 'Sucursal']
+2026-02-05 09:07:55,063 - INFO -   Mapeo aplicado: {'Articulo': 'Articulo', 'Descripcion': 'Descripcion', 'Cantidad': 'Cantidad', 'Precio': 'Precio', 'Total Precio': 'Total_precio'}
+2026-02-05 09:07:55,064 - INFO -   Columnas normalizadas: ['Articulo', 'Talle', 'Color', 'Descripcion', 'Cantidad', 'Precio', 'Total_precio', 'Stock Actual', 'Sucursal']
+2026-02-05 09:07:55,064 - INFO -   OK: Columna 'Articulo' verificada correctamente
+2026-02-05 09:07:55,064 - INFO - 
+============================================================
+2026-02-05 09:07:55,064 - INFO - FASE 3: LIMPIEZA (Deteccion Flexible)
+2026-02-05 09:07:55,064 - INFO - ============================================================
+2026-02-05 09:07:55,064 - INFO - Columnas disponibles: ['Articulo', 'Talle', 'Color', 'Descripcion', 'Cantidad', 'Precio', 'Total_precio', 'Stock Actual', 'Sucursal']
+2026-02-05 09:07:55,065 - INFO -   OK Columna de total detectada como: 'Total_precio'
+2026-02-05 09:07:55,065 - INFO -   OK Columna 'Cantidad' convertida a numerico
+2026-02-05 09:07:55,066 - INFO -   OK Columna 'Precio' convertida a numerico
+2026-02-05 09:07:55,069 - INFO -   Filas con Articulo vacio eliminadas: 0
+2026-02-05 09:07:55,082 - WARNING -   FILTRO PARETO: 9 filas de TOTAL/SUBTOTAL eliminadas
+2026-02-05 09:07:55,082 - INFO -   (Estas filas distorsionaban el calculo de Pareto)
+2026-02-05 09:07:55,082 - INFO - 
+Total limpio: 2766 filas
+2026-02-05 09:07:55,083 - INFO - Columnas finales: ['Articulo', 'Talle', 'Color', 'Descripcion', 'Cantidad', 'Precio', 'Total_precio', 'Stock Actual', 'Sucursal', 'Venta_Neta']
+2026-02-05 09:07:55,083 - INFO - 
+============================================================
+2026-02-05 09:07:55,083 - INFO - FASE 4: TRANSFORMACION - ANALISIS PARETO (Data Engineering)
+2026-02-05 09:07:55,083 - INFO - ============================================================
+2026-02-05 09:07:55,083 - INFO -   Columnas disponibles: ['Articulo', 'Talle', 'Color', 'Descripcion', 'Cantidad', 'Precio', 'Total_precio', 'Stock Actual', 'Sucursal', 'Venta_Neta']
+2026-02-05 09:07:55,083 - INFO - 
+  PASO 1: Calculo Maestro (nivel empresa)...
+2026-02-05 09:07:55,090 - INFO -     Articulos con venta positiva: 454
+2026-02-05 09:07:55,091 - INFO -     Facturacion total empresa: $309,550,458.08
+2026-02-05 09:07:55,092 - INFO - 
+  CLASIFICACION ABC GLOBAL:
+2026-02-05 09:07:55,092 - INFO -   ==================================================
+2026-02-05 09:07:55,093 - INFO -   Clase A (80%):    92 articulos (20.3% del catalogo)
+2026-02-05 09:07:55,093 - INFO -   Clase B (95%):   147 articulos (32.4% del catalogo)
+2026-02-05 09:07:55,093 - INFO -   Clase C (100%):  215 articulos (47.4% del catalogo)
+2026-02-05 09:07:55,093 - INFO -   ==================================================
+2026-02-05 09:07:55,093 - INFO - 
+  PASO 2: Detalle por Sucursal...
+2026-02-05 09:07:55,097 - INFO -     Combinaciones Articulo-Sucursal: 1218
+2026-02-05 09:07:55,098 - INFO -     Sucursales: 9
+2026-02-05 09:07:55,098 - INFO - 
+  PASO 3: Merge (Maestro + Detalle)...
+2026-02-05 09:07:55,101 - INFO -     Filas en resultado final: 1211
+2026-02-05 09:07:55,104 - INFO - 
+  TOP 5 ARTICULOS (Ranking Global):
+2026-02-05 09:07:55,104 - INFO -     #1: 26110 CAMISA CAMELIA - $16,307,335 (5.27%) [A]
+2026-02-05 09:07:55,105 - INFO -     #2: 26419 CHAQUETA SILENE - $8,546,480 (2.76%) [A]
+2026-02-05 09:07:55,105 - INFO -     #3: 26209 PANTALON NARCISO - $7,735,641 (2.50%) [A]
+2026-02-05 09:07:55,105 - INFO -     #4: 26207 PANTALON FRESIA - $7,283,656 (2.35%) [A]
+2026-02-05 09:07:55,105 - INFO -     #5: 26203 PANTALON SILENE - $6,622,560 (2.14%) [A]
+2026-02-05 09:07:55,105 - INFO - 
+  MODELO ESTRELLA (Star Schema):
+2026-02-05 09:07:55,106 - INFO -     dim_articulos: 454 filas (1 por articulo)
+2026-02-05 09:07:55,108 - INFO -     fact_ventas: 1211 filas (Articulo x Sucursal)
+2026-02-05 09:07:55,108 - INFO -     Integridad referencial: OK
+2026-02-05 09:07:55,108 - INFO - 
+============================================================
+2026-02-05 09:07:55,109 - INFO - FASE 5: CARGA - MODELO ESTRELLA (Star Schema)
+2026-02-05 09:07:55,109 - INFO - ============================================================
+2026-02-05 09:07:55,109 - INFO - 
+  Formato CSV: Excel-Spanish (sep=';', decimal=',')
+2026-02-05 09:07:55,116 - INFO - 
+  DIMENSION: dim_articulos.csv
+2026-02-05 09:07:55,116 - INFO -     Filas: 454
+2026-02-05 09:07:55,116 - INFO -     Columnas: ['Articulo', 'Descripcion', 'Ranking', 'Clasificacion_ABC', 'Venta_Total_Articulo', 'Porcentaje_Articulo_Global', 'Porcentaje_Acumulado']
+2026-02-05 09:07:55,116 - INFO -     Clave primaria: Articulo
+2026-02-05 09:07:55,120 - INFO - 
+  DIMENSION: dim_sucursales.csv
+2026-02-05 09:07:55,120 - INFO -     Filas: 9
+2026-02-05 09:07:55,120 - INFO -     Columnas: ['Sucursal', 'Tipo']
+2026-02-05 09:07:55,120 - INFO -     Clave primaria: Sucursal
+2026-02-05 09:07:55,125 - INFO - 
+  HECHOS: fact_ventas.csv
+2026-02-05 09:07:55,125 - INFO -     Filas: 1211
+2026-02-05 09:07:55,125 - INFO -     Columnas: ['Articulo', 'Sucursal', 'Venta_Sucursal', 'Cantidad_Sucursal']
+2026-02-05 09:07:55,125 - INFO -     Claves foraneas:
+2026-02-05 09:07:55,125 - INFO -       - Articulo -> dim_articulos
+2026-02-05 09:07:55,126 - INFO -       - Sucursal -> dim_sucursales
+2026-02-05 09:07:55,126 - INFO - 
+  RELACIONES EN POWER BI:
+2026-02-05 09:07:55,126 - INFO -   fact_ventas[Articulo] ---> dim_articulos[Articulo]
+2026-02-05 09:07:55,126 - INFO -   fact_ventas[Sucursal] ---> dim_sucursales[Sucursal]
+2026-02-05 09:07:55,126 - INFO -   (Muchos a Uno, direccion: Ambas)
+2026-02-05 09:07:55,126 - INFO - 
+############################################################
+2026-02-05 09:07:55,126 - INFO - PIPELINE COMPLETADO EXITOSAMENTE
+2026-02-05 09:07:55,126 - INFO - Archivos generados (formato Excel-Spanish):
+2026-02-05 09:07:55,127 - INFO -   - dim_articulos.csv (Dimension Articulos)
+2026-02-05 09:07:55,127 - INFO -   - dim_sucursales.csv (Dimension Sucursales)
+2026-02-05 09:07:55,127 - INFO -   - fact_ventas.csv (Tabla de Hechos)
+2026-02-05 09:07:55,127 - INFO - ############################################################
+2026-02-05 09:25:07,989 - INFO - 
+############################################################
+2026-02-05 09:25:07,989 - INFO - DATA CLEANING PIPELINE - MODELO ESTRELLA
+2026-02-05 09:25:07,989 - INFO - ############################################################
+2026-02-05 09:25:07,990 - INFO - 
+============================================================
+2026-02-05 09:25:07,990 - INFO - FASE 1: EXTRACCION (Smart Header Detection)
+2026-02-05 09:25:07,990 - INFO - ============================================================
+2026-02-05 09:25:07,990 - INFO - Archivos encontrados: 9
+2026-02-05 09:25:07,990 - INFO - 
+  Procesando: online.csv
+2026-02-05 09:25:08,001 - INFO -     OK: header=1, encoding=utf-8
+2026-02-05 09:25:08,003 - INFO -     ONLINE: 199 filas, 9 columnas
+2026-02-05 09:25:08,003 - INFO - 
+  Procesando: sucursal_1.csv
+2026-02-05 09:25:08,006 - INFO -     OK: header=1, encoding=utf-8
+2026-02-05 09:25:08,006 - INFO -     SUCURSAL_1: 324 filas, 9 columnas
+2026-02-05 09:25:08,006 - INFO - 
+  Procesando: sucursal_2.csv
+2026-02-05 09:25:08,009 - INFO -     OK: header=1, encoding=utf-8
+2026-02-05 09:25:08,009 - INFO -     SUCURSAL_2: 314 filas, 9 columnas
+2026-02-05 09:25:08,009 - INFO - 
+  Procesando: sucursal_3.csv
+2026-02-05 09:25:08,012 - INFO -     OK: header=1, encoding=utf-8
+2026-02-05 09:25:08,012 - INFO -     SUCURSAL_3: 331 filas, 9 columnas
+2026-02-05 09:25:08,012 - INFO - 
+  Procesando: sucursal_4.csv
+2026-02-05 09:25:08,015 - INFO -     OK: header=1, encoding=utf-8
+2026-02-05 09:25:08,015 - INFO -     SUCURSAL_4: 221 filas, 9 columnas
+2026-02-05 09:25:08,015 - INFO - 
+  Procesando: sucursal_5.csv
+2026-02-05 09:25:08,017 - INFO -     OK: header=1, encoding=utf-8
+2026-02-05 09:25:08,017 - INFO -     SUCURSAL_5: 297 filas, 9 columnas
+2026-02-05 09:25:08,018 - INFO - 
+  Procesando: sucursal_6.csv
+2026-02-05 09:25:08,020 - INFO -     OK: header=1, encoding=utf-8
+2026-02-05 09:25:08,020 - INFO -     SUCURSAL_6: 337 filas, 9 columnas
+2026-02-05 09:25:08,020 - INFO - 
+  Procesando: sucursal_7.csv
+2026-02-05 09:25:08,022 - INFO -     OK: header=1, encoding=utf-8
+2026-02-05 09:25:08,023 - INFO -     SUCURSAL_7: 281 filas, 9 columnas
+2026-02-05 09:25:08,023 - INFO - 
+  Procesando: sucursal_8.csv
+2026-02-05 09:25:08,026 - INFO -     OK: header=1, encoding=utf-8
+2026-02-05 09:25:08,026 - INFO -     SUCURSAL_8: 471 filas, 9 columnas
+2026-02-05 09:25:08,027 - INFO - 
+Total extraido: 2775 filas
+2026-02-05 09:25:08,027 - INFO - 
+============================================================
+2026-02-05 09:25:08,027 - INFO - FASE 2: NORMALIZACION DE COLUMNAS (Fuzzy Detection)
+2026-02-05 09:25:08,027 - INFO - ============================================================
+2026-02-05 09:25:08,027 - INFO -   Columnas originales: ['        Artículo           ', '   Talle   ', '   Color   ', '              Descripción                      ', 'Cantidad', '  Precio   ', '  Total Precio  ', 'Stock Actual', 'Sucursal']
+2026-02-05 09:25:08,029 - INFO -   Mapeo aplicado: {'Articulo': 'Articulo', 'Descripcion': 'Descripcion', 'Cantidad': 'Cantidad', 'Precio': 'Precio', 'Total Precio': 'Total_precio'}
+2026-02-05 09:25:08,030 - INFO -   Columnas normalizadas: ['Articulo', 'Talle', 'Color', 'Descripcion', 'Cantidad', 'Precio', 'Total_precio', 'Stock Actual', 'Sucursal']
+2026-02-05 09:25:08,030 - INFO -   OK: Columna 'Articulo' verificada correctamente
+2026-02-05 09:25:08,030 - INFO - 
+============================================================
+2026-02-05 09:25:08,030 - INFO - FASE 3: LIMPIEZA (Deteccion Flexible)
+2026-02-05 09:25:08,030 - INFO - ============================================================
+2026-02-05 09:25:08,030 - INFO - Columnas disponibles: ['Articulo', 'Talle', 'Color', 'Descripcion', 'Cantidad', 'Precio', 'Total_precio', 'Stock Actual', 'Sucursal']
+2026-02-05 09:25:08,030 - INFO -   OK Columna de total detectada como: 'Total_precio'
+2026-02-05 09:25:08,031 - INFO -   OK Columna 'Cantidad' convertida a numerico
+2026-02-05 09:25:08,031 - INFO -   OK Columna 'Precio' convertida a numerico
+2026-02-05 09:25:08,036 - INFO -   Filas con Articulo vacio eliminadas: 8
+2026-02-05 09:25:08,045 - WARNING -   FILTRO PARETO: 9 filas de TOTAL/SUBTOTAL eliminadas
+2026-02-05 09:25:08,045 - INFO -   (Estas filas distorsionaban el calculo de Pareto)
+2026-02-05 09:25:08,045 - INFO - 
+Total limpio: 2758 filas
+2026-02-05 09:25:08,045 - INFO - Columnas finales: ['Articulo', 'Talle', 'Color', 'Descripcion', 'Cantidad', 'Precio', 'Total_precio', 'Stock Actual', 'Sucursal', 'Venta_Neta']
+2026-02-05 09:25:08,045 - INFO - 
+============================================================
+2026-02-05 09:25:08,045 - INFO - FASE 4: TRANSFORMACION - PARETO CON CONSISTENCIA TOTAL
+2026-02-05 09:25:08,045 - INFO - ============================================================
+2026-02-05 09:25:08,045 - INFO -   Columnas disponibles: ['Articulo', 'Talle', 'Color', 'Descripcion', 'Cantidad', 'Precio', 'Total_precio', 'Stock Actual', 'Sucursal', 'Venta_Neta']
+2026-02-05 09:25:08,045 - INFO - 
+  PASO 1: Crear fact_ventas (tabla de hechos)...
+2026-02-05 09:25:08,054 - INFO -     Filas: 1347
+2026-02-05 09:25:08,054 - INFO -     Sucursales: 9
+2026-02-05 09:25:08,054 - INFO -     Total Venta_Neta: $308,351,145.28
+2026-02-05 09:25:08,054 - INFO - 
+  PASO 2: Crear dim_articulos DESDE fact_ventas...
+2026-02-05 09:25:08,060 - INFO -     Articulos con venta positiva: 454
+2026-02-05 09:25:08,060 - INFO -     Facturacion (solo positivos): $309,550,458.08
+2026-02-05 09:25:08,061 - INFO - 
+  CLASIFICACION ABC GLOBAL:
+2026-02-05 09:25:08,061 - INFO -   ==================================================
+2026-02-05 09:25:08,061 - INFO -   Clase A (80%):    92 articulos (20.3%)
+2026-02-05 09:25:08,061 - INFO -   Clase B (95%):   147 articulos (32.4%)
+2026-02-05 09:25:08,061 - INFO -   Clase C (100%):  215 articulos (47.4%)
+2026-02-05 09:25:08,061 - INFO -   ==================================================
+2026-02-05 09:25:08,061 - INFO - 
+  TOP 5 ARTICULOS:
+2026-02-05 09:25:08,062 - INFO -     #1: 26110 CAMISA CAMELIA - $16,307,335 (5.27%) [A]
+2026-02-05 09:25:08,062 - INFO -     #2: 26419 CHAQUETA SILENE - $8,546,480 (2.76%) [A]
+2026-02-05 09:25:08,062 - INFO -     #3: 26209 PANTALON NARCISO - $7,735,641 (2.50%) [A]
+2026-02-05 09:25:08,062 - INFO -     #4: 26207 PANTALON FRESIA - $7,283,656 (2.35%) [A]
+2026-02-05 09:25:08,062 - INFO -     #5: 26203 PANTALON SILENE - $6,622,560 (2.14%) [A]
+2026-02-05 09:25:08,062 - INFO - 
+  PASO 3: Verificacion de consistencia...
+2026-02-05 09:25:08,063 - INFO -     SUM(dim_articulos.Venta_Total): $309,550,458.08
+2026-02-05 09:25:08,064 - INFO -     SUM(fact_ventas.Venta_Neta):    $309,550,458.08
+2026-02-05 09:25:08,064 - INFO -     Diferencia: $0.00
+2026-02-05 09:25:08,064 - INFO -     CONSISTENCIA: OK
+2026-02-05 09:25:08,064 - INFO - 
+  MODELO ESTRELLA (Star Schema):
+2026-02-05 09:25:08,064 - INFO -     dim_articulos: 454 filas
+2026-02-05 09:25:08,065 - INFO -     fact_ventas: 1301 filas
+2026-02-05 09:25:08,065 - INFO -     Integridad referencial: OK
+2026-02-05 09:25:08,065 - INFO - 
+============================================================
+2026-02-05 09:25:08,065 - INFO - FASE 5: CARGA - MODELO ESTRELLA (Star Schema)
+2026-02-05 09:25:08,065 - INFO - ============================================================
+2026-02-05 09:25:08,065 - INFO - 
+  Formato CSV: Excel-Spanish (sep=';', decimal=',')
+2026-02-05 09:25:08,071 - INFO - 
+  DIMENSION: dim_articulos.csv
+2026-02-05 09:25:08,071 - INFO -     Filas: 454
+2026-02-05 09:25:08,071 - INFO -     Columnas: ['Articulo', 'Descripcion', 'Ranking', 'Clasificacion_ABC', 'Venta_Total_Articulo', 'Porcentaje_Articulo_Global', 'Porcentaje_Acumulado']
+2026-02-05 09:25:08,071 - INFO -     Clave primaria: Articulo
+2026-02-05 09:25:08,073 - INFO - 
+  DIMENSION: dim_sucursales.csv
+2026-02-05 09:25:08,073 - INFO -     Filas: 9
+2026-02-05 09:25:08,073 - INFO -     Columnas: ['Sucursal', 'Tipo']
+2026-02-05 09:25:08,073 - INFO -     Clave primaria: Sucursal
+2026-02-05 09:25:08,077 - INFO - 
+  HECHOS: fact_ventas.csv
+2026-02-05 09:25:08,078 - INFO -     Filas: 1301
+2026-02-05 09:25:08,078 - INFO -     Columnas: ['Articulo', 'Sucursal', 'Venta_Neta', 'Cantidad']
+2026-02-05 09:25:08,078 - INFO -     Claves foraneas:
+2026-02-05 09:25:08,078 - INFO -       - Articulo -> dim_articulos
+2026-02-05 09:25:08,078 - INFO -       - Sucursal -> dim_sucursales
+2026-02-05 09:25:08,078 - INFO - 
+  RELACIONES EN POWER BI:
+2026-02-05 09:25:08,078 - INFO -   fact_ventas[Articulo] ---> dim_articulos[Articulo]
+2026-02-05 09:25:08,078 - INFO -   fact_ventas[Sucursal] ---> dim_sucursales[Sucursal]
+2026-02-05 09:25:08,078 - INFO -   (Muchos a Uno, direccion: Ambas)
+2026-02-05 09:25:08,078 - INFO - 
+############################################################
+2026-02-05 09:25:08,078 - INFO - PIPELINE COMPLETADO EXITOSAMENTE
+2026-02-05 09:25:08,078 - INFO - Archivos generados (formato Excel-Spanish):
+2026-02-05 09:25:08,078 - INFO -   - dim_articulos.csv (Dimension Articulos)
+2026-02-05 09:25:08,078 - INFO -   - dim_sucursales.csv (Dimension Sucursales)
+2026-02-05 09:25:08,078 - INFO -   - fact_ventas.csv (Tabla de Hechos)
+2026-02-05 09:25:08,078 - INFO - ############################################################
+2026-02-05 09:28:39,077 - INFO - 
+############################################################
+2026-02-05 09:28:39,077 - INFO - DATA CLEANING PIPELINE - MODELO ESTRELLA
+2026-02-05 09:28:39,078 - INFO - ############################################################
+2026-02-05 09:28:39,078 - INFO - 
+============================================================
+2026-02-05 09:28:39,078 - INFO - FASE 1: EXTRACCION (Smart Header Detection)
+2026-02-05 09:28:39,078 - INFO - ============================================================
+2026-02-05 09:28:39,079 - INFO - Archivos encontrados: 9
+2026-02-05 09:28:39,079 - INFO - 
+  Procesando: online.csv
+2026-02-05 09:28:39,091 - INFO -     OK: header=1, encoding=utf-8
+2026-02-05 09:28:39,092 - INFO -     ONLINE: 199 filas, 9 columnas
+2026-02-05 09:28:39,092 - INFO - 
+  Procesando: sucursal_1.csv
+2026-02-05 09:28:39,096 - INFO -     OK: header=1, encoding=utf-8
+2026-02-05 09:28:39,097 - INFO -     SUCURSAL_1: 324 filas, 9 columnas
+2026-02-05 09:28:39,097 - INFO - 
+  Procesando: sucursal_2.csv
+2026-02-05 09:28:39,102 - INFO -     OK: header=1, encoding=utf-8
+2026-02-05 09:28:39,102 - INFO -     SUCURSAL_2: 314 filas, 9 columnas
+2026-02-05 09:28:39,102 - INFO - 
+  Procesando: sucursal_3.csv
+2026-02-05 09:28:39,107 - INFO -     OK: header=1, encoding=utf-8
+2026-02-05 09:28:39,107 - INFO -     SUCURSAL_3: 331 filas, 9 columnas
+2026-02-05 09:28:39,108 - INFO - 
+  Procesando: sucursal_4.csv
+2026-02-05 09:28:39,111 - INFO -     OK: header=1, encoding=utf-8
+2026-02-05 09:28:39,111 - INFO -     SUCURSAL_4: 221 filas, 9 columnas
+2026-02-05 09:28:39,112 - INFO - 
+  Procesando: sucursal_5.csv
+2026-02-05 09:28:39,115 - INFO -     OK: header=1, encoding=utf-8
+2026-02-05 09:28:39,116 - INFO -     SUCURSAL_5: 297 filas, 9 columnas
+2026-02-05 09:28:39,116 - INFO - 
+  Procesando: sucursal_6.csv
+2026-02-05 09:28:39,119 - INFO -     OK: header=1, encoding=utf-8
+2026-02-05 09:28:39,120 - INFO -     SUCURSAL_6: 337 filas, 9 columnas
+2026-02-05 09:28:39,121 - INFO - 
+  Procesando: sucursal_7.csv
+2026-02-05 09:28:39,124 - INFO -     OK: header=1, encoding=utf-8
+2026-02-05 09:28:39,124 - INFO -     SUCURSAL_7: 281 filas, 9 columnas
+2026-02-05 09:28:39,125 - INFO - 
+  Procesando: sucursal_8.csv
+2026-02-05 09:28:39,129 - INFO -     OK: header=1, encoding=utf-8
+2026-02-05 09:28:39,130 - INFO -     SUCURSAL_8: 471 filas, 9 columnas
+2026-02-05 09:28:39,132 - INFO - 
+Total extraido: 2775 filas
+2026-02-05 09:28:39,132 - INFO - 
+============================================================
+2026-02-05 09:28:39,133 - INFO - FASE 2: NORMALIZACION DE COLUMNAS (Fuzzy Detection)
+2026-02-05 09:28:39,133 - INFO - ============================================================
+2026-02-05 09:28:39,133 - INFO -   Columnas originales: ['        Artículo           ', '   Talle   ', '   Color   ', '              Descripción                      ', 'Cantidad', '  Precio   ', '  Total Precio  ', 'Stock Actual', 'Sucursal']
+2026-02-05 09:28:39,136 - INFO -   Mapeo aplicado: {'Articulo': 'Articulo', 'Descripcion': 'Descripcion', 'Cantidad': 'Cantidad', 'Precio': 'Precio', 'Total Precio': 'Total_precio'}
+2026-02-05 09:28:39,137 - INFO -   Columnas normalizadas: ['Articulo', 'Talle', 'Color', 'Descripcion', 'Cantidad', 'Precio', 'Total_precio', 'Stock Actual', 'Sucursal']
+2026-02-05 09:28:39,137 - INFO -   OK: Columna 'Articulo' verificada correctamente
+2026-02-05 09:28:39,137 - INFO - 
+============================================================
+2026-02-05 09:28:39,137 - INFO - FASE 3: LIMPIEZA (Deteccion Flexible)
+2026-02-05 09:28:39,137 - INFO - ============================================================
+2026-02-05 09:28:39,137 - INFO - Columnas disponibles: ['Articulo', 'Talle', 'Color', 'Descripcion', 'Cantidad', 'Precio', 'Total_precio', 'Stock Actual', 'Sucursal']
+2026-02-05 09:28:39,138 - INFO -   OK Columna de total detectada como: 'Total_precio'
+2026-02-05 09:28:39,139 - INFO -   OK Columna 'Cantidad' convertida a numerico
+2026-02-05 09:28:39,139 - INFO -   OK Columna 'Precio' convertida a numerico
+2026-02-05 09:28:39,142 - INFO -   Filas con Articulo vacio eliminadas: 0
+2026-02-05 09:28:39,154 - WARNING -   FILTRO PARETO: 9 filas de TOTAL/SUBTOTAL eliminadas
+2026-02-05 09:28:39,154 - INFO -   (Estas filas distorsionaban el calculo de Pareto)
+2026-02-05 09:28:39,154 - INFO - 
+Total limpio: 2766 filas
+2026-02-05 09:28:39,154 - INFO - Columnas finales: ['Articulo', 'Talle', 'Color', 'Descripcion', 'Cantidad', 'Precio', 'Total_precio', 'Stock Actual', 'Sucursal', 'Venta_Neta']
+2026-02-05 09:28:39,154 - INFO - 
+============================================================
+2026-02-05 09:28:39,155 - INFO - FASE 4: TRANSFORMACION - PARETO CON CONSISTENCIA TOTAL
+2026-02-05 09:28:39,155 - INFO - ============================================================
+2026-02-05 09:28:39,155 - INFO -   Columnas disponibles: ['Articulo', 'Talle', 'Color', 'Descripcion', 'Cantidad', 'Precio', 'Total_precio', 'Stock Actual', 'Sucursal', 'Venta_Neta']
+2026-02-05 09:28:39,155 - INFO - 
+  PASO 1: Crear fact_ventas (tabla de hechos)...
+2026-02-05 09:28:39,164 - INFO -     Filas: 1347
+2026-02-05 09:28:39,164 - INFO -     Sucursales: 9
+2026-02-05 09:28:39,165 - INFO -     Total Venta_Neta: $308,351,145.28
+2026-02-05 09:28:39,165 - INFO - 
+  PASO 2: Crear dim_articulos DESDE fact_ventas...
+2026-02-05 09:28:39,172 - INFO -     Articulos con venta positiva: 454
+2026-02-05 09:28:39,172 - INFO -     Facturacion (solo positivos): $309,550,458.08
+2026-02-05 09:28:39,173 - INFO - 
+  CLASIFICACION ABC GLOBAL:
+2026-02-05 09:28:39,174 - INFO -   ==================================================
+2026-02-05 09:28:39,174 - INFO -   Clase A (80%):    92 articulos (20.3%)
+2026-02-05 09:28:39,174 - INFO -   Clase B (95%):   147 articulos (32.4%)
+2026-02-05 09:28:39,174 - INFO -   Clase C (100%):  215 articulos (47.4%)
+2026-02-05 09:28:39,174 - INFO -   ==================================================
+2026-02-05 09:28:39,174 - INFO - 
+  TOP 5 ARTICULOS:
+2026-02-05 09:28:39,175 - INFO -     #1: 26110 CAMISA CAMELIA - $16,307,335 (5.27%) [A]
+2026-02-05 09:28:39,175 - INFO -     #2: 26419 CHAQUETA SILENE - $8,546,480 (2.76%) [A]
+2026-02-05 09:28:39,175 - INFO -     #3: 26209 PANTALON NARCISO - $7,735,641 (2.50%) [A]
+2026-02-05 09:28:39,176 - INFO -     #4: 26207 PANTALON FRESIA - $7,283,656 (2.35%) [A]
+2026-02-05 09:28:39,176 - INFO -     #5: 26203 PANTALON SILENE - $6,622,560 (2.14%) [A]
+2026-02-05 09:28:39,176 - INFO - 
+  PASO 3: Verificacion de consistencia...
+2026-02-05 09:28:39,177 - INFO -     SUM(dim_articulos.Venta_Total): $309,550,458.08
+2026-02-05 09:28:39,178 - INFO -     SUM(fact_ventas.Venta_Neta):    $309,550,458.08
+2026-02-05 09:28:39,178 - INFO -     Diferencia: $0.00
+2026-02-05 09:28:39,178 - INFO -     CONSISTENCIA: OK
+2026-02-05 09:28:39,178 - INFO - 
+  MODELO ESTRELLA (Star Schema):
+2026-02-05 09:28:39,179 - INFO -     dim_articulos: 454 filas
+2026-02-05 09:28:39,179 - INFO -     fact_ventas: 1301 filas
+2026-02-05 09:28:39,179 - INFO -     Integridad referencial: OK
+2026-02-05 09:28:39,179 - INFO - 
+============================================================
+2026-02-05 09:28:39,179 - INFO - FASE 5: CARGA - MODELO ESTRELLA (Star Schema)
+2026-02-05 09:28:39,179 - INFO - ============================================================
+2026-02-05 09:28:39,180 - INFO - 
+  Formato CSV: Excel-Spanish (sep=';', decimal=',')
+2026-02-05 09:28:39,185 - INFO - 
+  DIMENSION: dim_articulos.csv
+2026-02-05 09:28:39,185 - INFO -     Filas: 454
+2026-02-05 09:28:39,186 - INFO -     Columnas: ['Articulo', 'Descripcion', 'Ranking', 'Clasificacion_ABC', 'Venta_Total_Articulo', 'Porcentaje_Articulo_Global', 'Porcentaje_Acumulado']
+2026-02-05 09:28:39,186 - INFO -     Clave primaria: Articulo
+2026-02-05 09:28:39,189 - INFO - 
+  DIMENSION: dim_sucursales.csv
+2026-02-05 09:28:39,189 - INFO -     Filas: 9
+2026-02-05 09:28:39,189 - INFO -     Columnas: ['Sucursal', 'Tipo']
+2026-02-05 09:28:39,190 - INFO -     Clave primaria: Sucursal
+2026-02-05 09:28:39,194 - INFO - 
+  HECHOS: fact_ventas.csv
+2026-02-05 09:28:39,194 - INFO -     Filas: 1301
+2026-02-05 09:28:39,194 - INFO -     Columnas: ['Articulo', 'Sucursal', 'Venta_Neta', 'Cantidad']
+2026-02-05 09:28:39,195 - INFO -     Claves foraneas:
+2026-02-05 09:28:39,195 - INFO -       - Articulo -> dim_articulos
+2026-02-05 09:28:39,195 - INFO -       - Sucursal -> dim_sucursales
+2026-02-05 09:28:39,195 - INFO - 
+  RELACIONES EN POWER BI:
+2026-02-05 09:28:39,195 - INFO -   fact_ventas[Articulo] ---> dim_articulos[Articulo]
+2026-02-05 09:28:39,195 - INFO -   fact_ventas[Sucursal] ---> dim_sucursales[Sucursal]
+2026-02-05 09:28:39,196 - INFO -   (Muchos a Uno, direccion: Ambas)
+2026-02-05 09:28:39,196 - INFO - 
+############################################################
+2026-02-05 09:28:39,196 - INFO - PIPELINE COMPLETADO EXITOSAMENTE
+2026-02-05 09:28:39,196 - INFO - Archivos generados (formato Excel-Spanish):
+2026-02-05 09:28:39,196 - INFO -   - dim_articulos.csv (Dimension Articulos)
+2026-02-05 09:28:39,196 - INFO -   - dim_sucursales.csv (Dimension Sucursales)
+2026-02-05 09:28:39,196 - INFO -   - fact_ventas.csv (Tabla de Hechos)
+2026-02-05 09:28:39,196 - INFO - ############################################################
+2026-02-05 14:42:46,357 - INFO - 
+############################################################
+2026-02-05 14:42:46,358 - INFO - DATA CLEANING PIPELINE - MODELO ESTRELLA
+2026-02-05 14:42:46,358 - INFO - ############################################################
+2026-02-05 14:42:46,358 - INFO - 
+============================================================
+2026-02-05 14:42:46,358 - INFO - FASE 1: EXTRACCION (Smart Header Detection)
+2026-02-05 14:42:46,359 - INFO - ============================================================
+2026-02-05 14:42:46,359 - INFO - Archivos encontrados: 9
+2026-02-05 14:42:46,359 - INFO - 
+  Procesando: online.csv
+2026-02-05 14:42:46,371 - INFO -     OK: header=1, encoding=utf-8
+2026-02-05 14:42:46,373 - INFO -     ONLINE: 199 filas, 9 columnas
+2026-02-05 14:42:46,373 - INFO - 
+  Procesando: sucursal_1.csv
+2026-02-05 14:42:46,377 - INFO -     OK: header=1, encoding=utf-8
+2026-02-05 14:42:46,377 - INFO -     SUCURSAL_1: 324 filas, 9 columnas
+2026-02-05 14:42:46,377 - INFO - 
+  Procesando: sucursal_2.csv
+2026-02-05 14:42:46,380 - INFO -     OK: header=1, encoding=utf-8
+2026-02-05 14:42:46,380 - INFO -     SUCURSAL_2: 314 filas, 9 columnas
+2026-02-05 14:42:46,381 - INFO - 
+  Procesando: sucursal_3.csv
+2026-02-05 14:42:46,384 - INFO -     OK: header=1, encoding=utf-8
+2026-02-05 14:42:46,384 - INFO -     SUCURSAL_3: 331 filas, 9 columnas
+2026-02-05 14:42:46,384 - INFO - 
+  Procesando: sucursal_4.csv
+2026-02-05 14:42:46,387 - INFO -     OK: header=1, encoding=utf-8
+2026-02-05 14:42:46,387 - INFO -     SUCURSAL_4: 221 filas, 9 columnas
+2026-02-05 14:42:46,388 - INFO - 
+  Procesando: sucursal_5.csv
+2026-02-05 14:42:46,391 - INFO -     OK: header=1, encoding=utf-8
+2026-02-05 14:42:46,391 - INFO -     SUCURSAL_5: 297 filas, 9 columnas
+2026-02-05 14:42:46,391 - INFO - 
+  Procesando: sucursal_6.csv
+2026-02-05 14:42:46,394 - INFO -     OK: header=1, encoding=utf-8
+2026-02-05 14:42:46,395 - INFO -     SUCURSAL_6: 337 filas, 9 columnas
+2026-02-05 14:42:46,395 - INFO - 
+  Procesando: sucursal_7.csv
+2026-02-05 14:42:46,398 - INFO -     OK: header=1, encoding=utf-8
+2026-02-05 14:42:46,398 - INFO -     SUCURSAL_7: 281 filas, 9 columnas
+2026-02-05 14:42:46,398 - INFO - 
+  Procesando: sucursal_8.csv
+2026-02-05 14:42:46,402 - INFO -     OK: header=1, encoding=utf-8
+2026-02-05 14:42:46,402 - INFO -     SUCURSAL_8: 471 filas, 9 columnas
+2026-02-05 14:42:46,404 - INFO - 
+Total extraido: 2775 filas
+2026-02-05 14:42:46,404 - INFO - 
+============================================================
+2026-02-05 14:42:46,404 - INFO - FASE 2: NORMALIZACION DE COLUMNAS (Fuzzy Detection)
+2026-02-05 14:42:46,404 - INFO - ============================================================
+2026-02-05 14:42:46,404 - INFO -   Columnas originales: ['        Artículo           ', '   Talle   ', '   Color   ', '              Descripción                      ', 'Cantidad', '  Precio   ', '  Total Precio  ', 'Stock Actual', 'Sucursal']
+2026-02-05 14:42:46,406 - INFO -   Mapeo aplicado: {'Articulo': 'Articulo', 'Descripcion': 'Descripcion', 'Cantidad': 'Cantidad', 'Precio': 'Precio', 'Total Precio': 'Total_precio'}
+2026-02-05 14:42:46,406 - INFO -   Columnas normalizadas: ['Articulo', 'Talle', 'Color', 'Descripcion', 'Cantidad', 'Precio', 'Total_precio', 'Stock Actual', 'Sucursal']
+2026-02-05 14:42:46,406 - INFO -   OK: Columna 'Articulo' verificada correctamente
+2026-02-05 14:42:46,406 - INFO - 
+============================================================
+2026-02-05 14:42:46,406 - INFO - FASE 3: LIMPIEZA (Deteccion Flexible)
+2026-02-05 14:42:46,406 - INFO - ============================================================
+2026-02-05 14:42:46,406 - INFO - Columnas disponibles: ['Articulo', 'Talle', 'Color', 'Descripcion', 'Cantidad', 'Precio', 'Total_precio', 'Stock Actual', 'Sucursal']
+2026-02-05 14:42:46,407 - INFO -   OK Columna de total detectada como: 'Total_precio'
+2026-02-05 14:42:46,408 - INFO -   OK Columna 'Cantidad' convertida a numerico
+2026-02-05 14:42:46,408 - INFO -   OK Columna 'Precio' convertida a numerico
+2026-02-05 14:42:46,412 - INFO -   Filas con Articulo vacio eliminadas: 8
+2026-02-05 14:42:46,424 - WARNING -   FILTRO PARETO: 9 filas de TOTAL/SUBTOTAL eliminadas
+2026-02-05 14:42:46,424 - INFO -   (Estas filas distorsionaban el calculo de Pareto)
+2026-02-05 14:42:46,424 - INFO - 
+Total limpio: 2758 filas
+2026-02-05 14:42:46,424 - INFO - Columnas finales: ['Articulo', 'Talle', 'Color', 'Descripcion', 'Cantidad', 'Precio', 'Total_precio', 'Stock Actual', 'Sucursal', 'Venta_Neta']
+2026-02-05 14:42:46,424 - INFO - 
+============================================================
+2026-02-05 14:42:46,424 - INFO - FASE 4: TRANSFORMACION - PARETO CON CONSISTENCIA TOTAL
+2026-02-05 14:42:46,424 - INFO - ============================================================
+2026-02-05 14:42:46,424 - INFO -   Columnas disponibles: ['Articulo', 'Talle', 'Color', 'Descripcion', 'Cantidad', 'Precio', 'Total_precio', 'Stock Actual', 'Sucursal', 'Venta_Neta']
+2026-02-05 14:42:46,424 - INFO - 
+  PASO 1: Crear fact_ventas (tabla de hechos)...
+2026-02-05 14:42:46,434 - INFO -     Filas: 1347
+2026-02-05 14:42:46,435 - INFO -     Sucursales: 9
+2026-02-05 14:42:46,435 - INFO -     Venta Bruta:      $333,465,064.09
+2026-02-05 14:42:46,435 - INFO -     Devoluciones:     $25,113,918.81
+2026-02-05 14:42:46,435 - INFO -     Venta Neta:       $308,351,145.28
+2026-02-05 14:42:46,435 - INFO -     Tasa Devolucion:  7.53%
+2026-02-05 14:42:46,435 - INFO - 
+  PASO 2: Crear dim_articulos DESDE fact_ventas...
+2026-02-05 14:42:46,441 - INFO -     Articulos con venta positiva: 454
+2026-02-05 14:42:46,441 - INFO -     Facturacion (solo positivos): $309,550,458.08
+2026-02-05 14:42:46,442 - INFO - 
+  CLASIFICACION ABC GLOBAL:
+2026-02-05 14:42:46,443 - INFO -   ==================================================
+2026-02-05 14:42:46,443 - INFO -   Clase A (80%):    92 articulos (20.3%)
+2026-02-05 14:42:46,443 - INFO -   Clase B (95%):   147 articulos (32.4%)
+2026-02-05 14:42:46,443 - INFO -   Clase C (100%):  215 articulos (47.4%)
+2026-02-05 14:42:46,443 - INFO -   ==================================================
+2026-02-05 14:42:46,443 - INFO - 
+  TOP 5 ARTICULOS:
+2026-02-05 14:42:46,443 - INFO -     #1: 26110 CAMISA CAMELIA - $16,307,335 (5.27%) [A]
+2026-02-05 14:42:46,443 - INFO -     #2: 26419 CHAQUETA SILENE - $8,546,480 (2.76%) [A]
+2026-02-05 14:42:46,443 - INFO -     #3: 26209 PANTALON NARCISO - $7,735,641 (2.50%) [A]
+2026-02-05 14:42:46,443 - INFO -     #4: 26207 PANTALON FRESIA - $7,283,656 (2.35%) [A]
+2026-02-05 14:42:46,444 - INFO -     #5: 26203 PANTALON SILENE - $6,622,560 (2.14%) [A]
+2026-02-05 14:42:46,444 - INFO - 
+  PASO 3: Verificacion de consistencia...
+2026-02-05 14:42:46,445 - INFO -     SUM(dim_articulos.Venta_Neta_Total): $309,550,458.08
+2026-02-05 14:42:46,445 - INFO -     SUM(fact_ventas.Venta_Neta):         $309,550,458.08
+2026-02-05 14:42:46,445 - INFO -     Diferencia: $0.00
+2026-02-05 14:42:46,445 - INFO -     CONSISTENCIA: OK
+2026-02-05 14:42:46,445 - INFO - 
+  MODELO ESTRELLA (Star Schema):
+2026-02-05 14:42:46,446 - INFO -     dim_articulos: 454 filas
+2026-02-05 14:42:46,446 - INFO -     fact_ventas: 1301 filas
+2026-02-05 14:42:46,446 - INFO -     Integridad referencial: OK
+2026-02-05 14:42:46,447 - INFO - 
+============================================================
+2026-02-05 14:42:46,447 - INFO - FASE 5: CARGA - MODELO ESTRELLA (Star Schema)
+2026-02-05 14:42:46,447 - INFO - ============================================================
+2026-02-05 14:42:46,447 - INFO - 
+  Formato CSV: Excel-Spanish (sep=';', decimal=',')
+2026-02-05 14:42:46,454 - INFO - 
+  DIMENSION: dim_articulos.csv
+2026-02-05 14:42:46,454 - INFO -     Filas: 454
+2026-02-05 14:42:46,454 - INFO -     Columnas: ['Articulo', 'Descripcion', 'Ranking', 'Clasificacion_ABC', 'Venta_Neta_Total', 'Venta_Bruta_Total', 'Venta_Devolucion_Total', 'Tasa_Devolucion', 'Porcentaje_Articulo_Global', 'Porcentaje_Acumulado']
+2026-02-05 14:42:46,454 - INFO -     Clave primaria: Articulo
+2026-02-05 14:42:46,457 - INFO - 
+  DIMENSION: dim_sucursales.csv
+2026-02-05 14:42:46,457 - INFO -     Filas: 9
+2026-02-05 14:42:46,457 - INFO -     Columnas: ['Sucursal', 'Tipo']
+2026-02-05 14:42:46,457 - INFO -     Clave primaria: Sucursal
+2026-02-05 14:42:46,464 - INFO - 
+  HECHOS: fact_ventas.csv
+2026-02-05 14:42:46,464 - INFO -     Filas: 1301
+2026-02-05 14:42:46,464 - INFO -     Columnas: ['Articulo', 'Sucursal', 'Venta_Neta', 'Venta_Bruta', 'Venta_Devolucion', 'Cantidad']
+2026-02-05 14:42:46,464 - INFO -     Claves foraneas:
+2026-02-05 14:42:46,464 - INFO -       - Articulo -> dim_articulos
+2026-02-05 14:42:46,464 - INFO -       - Sucursal -> dim_sucursales
+2026-02-05 14:42:46,464 - INFO - 
+  RELACIONES EN POWER BI:
+2026-02-05 14:42:46,464 - INFO -   fact_ventas[Articulo] ---> dim_articulos[Articulo]
+2026-02-05 14:42:46,464 - INFO -   fact_ventas[Sucursal] ---> dim_sucursales[Sucursal]
+2026-02-05 14:42:46,464 - INFO -   (Muchos a Uno, direccion: Ambas)
+2026-02-05 14:42:46,464 - INFO - 
+############################################################
+2026-02-05 14:42:46,464 - INFO - PIPELINE COMPLETADO EXITOSAMENTE
+2026-02-05 14:42:46,464 - INFO - Archivos generados (formato Excel-Spanish):
+2026-02-05 14:42:46,464 - INFO -   - dim_articulos.csv (Dimension Articulos)
+2026-02-05 14:42:46,464 - INFO -   - dim_sucursales.csv (Dimension Sucursales)
+2026-02-05 14:42:46,465 - INFO -   - fact_ventas.csv (Tabla de Hechos)
+2026-02-05 14:42:46,465 - INFO - ############################################################
+2026-02-05 14:47:18,080 - INFO - 
+############################################################
+2026-02-05 14:47:18,081 - INFO - DATA CLEANING PIPELINE - MODELO ESTRELLA
+2026-02-05 14:47:18,081 - INFO - ############################################################
+2026-02-05 14:47:18,081 - INFO - 
+============================================================
+2026-02-05 14:47:18,081 - INFO - FASE 1: EXTRACCION (Smart Header Detection)
+2026-02-05 14:47:18,082 - INFO - ============================================================
+2026-02-05 14:47:18,082 - INFO - Archivos encontrados: 9
+2026-02-05 14:47:18,082 - INFO - 
+  Procesando: online.csv
+2026-02-05 14:47:18,094 - INFO -     OK: header=1, encoding=utf-8
+2026-02-05 14:47:18,095 - INFO -     ONLINE: 199 filas, 9 columnas
+2026-02-05 14:47:18,096 - INFO - 
+  Procesando: sucursal_1.csv
+2026-02-05 14:47:18,100 - INFO -     OK: header=1, encoding=utf-8
+2026-02-05 14:47:18,101 - INFO -     SUCURSAL_1: 324 filas, 9 columnas
+2026-02-05 14:47:18,101 - INFO - 
+  Procesando: sucursal_2.csv
+2026-02-05 14:47:18,105 - INFO -     OK: header=1, encoding=utf-8
+2026-02-05 14:47:18,106 - INFO -     SUCURSAL_2: 314 filas, 9 columnas
+2026-02-05 14:47:18,106 - INFO - 
+  Procesando: sucursal_3.csv
+2026-02-05 14:47:18,111 - INFO -     OK: header=1, encoding=utf-8
+2026-02-05 14:47:18,112 - INFO -     SUCURSAL_3: 331 filas, 9 columnas
+2026-02-05 14:47:18,112 - INFO - 
+  Procesando: sucursal_4.csv
+2026-02-05 14:47:18,116 - INFO -     OK: header=1, encoding=utf-8
+2026-02-05 14:47:18,116 - INFO -     SUCURSAL_4: 221 filas, 9 columnas
+2026-02-05 14:47:18,116 - INFO - 
+  Procesando: sucursal_5.csv
+2026-02-05 14:47:18,120 - INFO -     OK: header=1, encoding=utf-8
+2026-02-05 14:47:18,121 - INFO -     SUCURSAL_5: 297 filas, 9 columnas
+2026-02-05 14:47:18,121 - INFO - 
+  Procesando: sucursal_6.csv
+2026-02-05 14:47:18,126 - INFO -     OK: header=1, encoding=utf-8
+2026-02-05 14:47:18,126 - INFO -     SUCURSAL_6: 337 filas, 9 columnas
+2026-02-05 14:47:18,127 - INFO - 
+  Procesando: sucursal_7.csv
+2026-02-05 14:47:18,131 - INFO -     OK: header=1, encoding=utf-8
+2026-02-05 14:47:18,132 - INFO -     SUCURSAL_7: 281 filas, 9 columnas
+2026-02-05 14:47:18,132 - INFO - 
+  Procesando: sucursal_8.csv
+2026-02-05 14:47:18,137 - INFO -     OK: header=1, encoding=utf-8
+2026-02-05 14:47:18,137 - INFO -     SUCURSAL_8: 471 filas, 9 columnas
+2026-02-05 14:47:18,139 - INFO - 
+Total extraido: 2775 filas
+2026-02-05 14:47:18,140 - INFO - 
+============================================================
+2026-02-05 14:47:18,140 - INFO - FASE 2: NORMALIZACION DE COLUMNAS (Fuzzy Detection)
+2026-02-05 14:47:18,140 - INFO - ============================================================
+2026-02-05 14:47:18,140 - INFO -   Columnas originales: ['        Artículo           ', '   Talle   ', '   Color   ', '              Descripción                      ', 'Cantidad', '  Precio   ', '  Total Precio  ', 'Stock Actual', 'Sucursal']
+2026-02-05 14:47:18,147 - INFO -   Mapeo aplicado: {'Articulo': 'Articulo', 'Descripcion': 'Descripcion', 'Cantidad': 'Cantidad', 'Precio': 'Precio', 'Total Precio': 'Total_precio'}
+2026-02-05 14:47:18,148 - INFO -   Columnas normalizadas: ['Articulo', 'Talle', 'Color', 'Descripcion', 'Cantidad', 'Precio', 'Total_precio', 'Stock Actual', 'Sucursal']
+2026-02-05 14:47:18,149 - INFO -   OK: Columna 'Articulo' verificada correctamente
+2026-02-05 14:47:18,150 - INFO - 
+============================================================
+2026-02-05 14:47:18,150 - INFO - FASE 3: LIMPIEZA (Deteccion Flexible)
+2026-02-05 14:47:18,150 - INFO - ============================================================
+2026-02-05 14:47:18,152 - INFO - Columnas disponibles: ['Articulo', 'Talle', 'Color', 'Descripcion', 'Cantidad', 'Precio', 'Total_precio', 'Stock Actual', 'Sucursal']
+2026-02-05 14:47:18,155 - INFO -   OK Columna de total detectada como: 'Total_precio'
+2026-02-05 14:47:18,157 - INFO -   OK Columna 'Cantidad' convertida a numerico
+2026-02-05 14:47:18,159 - INFO -   OK Columna 'Precio' convertida a numerico
+2026-02-05 14:47:18,172 - INFO -   Filas con Articulo vacio eliminadas: 0
+2026-02-05 14:47:18,187 - WARNING -   FILTRO PARETO: 9 filas de TOTAL/SUBTOTAL eliminadas
+2026-02-05 14:47:18,188 - INFO -   (Estas filas distorsionaban el calculo de Pareto)
+2026-02-05 14:47:18,188 - INFO - 
+Total limpio: 2766 filas
+2026-02-05 14:47:18,188 - INFO - Columnas finales: ['Articulo', 'Talle', 'Color', 'Descripcion', 'Cantidad', 'Precio', 'Total_precio', 'Stock Actual', 'Sucursal', 'Venta_Neta']
+2026-02-05 14:47:18,188 - INFO - 
+============================================================
+2026-02-05 14:47:18,188 - INFO - FASE 4: TRANSFORMACION - PARETO CON CONSISTENCIA TOTAL
+2026-02-05 14:47:18,188 - INFO - ============================================================
+2026-02-05 14:47:18,189 - INFO -   Columnas disponibles: ['Articulo', 'Talle', 'Color', 'Descripcion', 'Cantidad', 'Precio', 'Total_precio', 'Stock Actual', 'Sucursal', 'Venta_Neta']
+2026-02-05 14:47:18,189 - INFO - 
+  PASO 1: Crear fact_ventas (tabla de hechos)...
+2026-02-05 14:47:18,202 - INFO -     Filas: 1347
+2026-02-05 14:47:18,202 - INFO -     Sucursales: 9
+2026-02-05 14:47:18,202 - INFO -     Venta Bruta:      $333,465,064.09
+2026-02-05 14:47:18,202 - INFO -     Devoluciones:     $25,113,918.81
+2026-02-05 14:47:18,202 - INFO -     Venta Neta:       $308,351,145.28
+2026-02-05 14:47:18,203 - INFO -     Tasa Devolucion:  7.53%
+2026-02-05 14:47:18,203 - INFO - 
+  PASO 2: Crear dim_articulos DESDE fact_ventas...
+2026-02-05 14:47:18,213 - INFO -     Articulos con venta positiva: 454
+2026-02-05 14:47:18,213 - INFO -     Facturacion (solo positivos): $309,550,458.08
+2026-02-05 14:47:18,215 - INFO - 
+  CLASIFICACION ABC GLOBAL:
+2026-02-05 14:47:18,215 - INFO -   ==================================================
+2026-02-05 14:47:18,215 - INFO -   Clase A (80%):    92 articulos (20.3%)
+2026-02-05 14:47:18,215 - INFO -   Clase B (95%):   147 articulos (32.4%)
+2026-02-05 14:47:18,216 - INFO -   Clase C (100%):  215 articulos (47.4%)
+2026-02-05 14:47:18,216 - INFO -   ==================================================
+2026-02-05 14:47:18,216 - INFO - 
+  TOP 5 ARTICULOS:
+2026-02-05 14:47:18,217 - INFO -     #1: 26110 CAMISA CAMELIA - $16,307,335 (5.27%) [A]
+2026-02-05 14:47:18,217 - INFO -     #2: 26419 CHAQUETA SILENE - $8,546,480 (2.76%) [A]
+2026-02-05 14:47:18,217 - INFO -     #3: 26209 PANTALON NARCISO - $7,735,641 (2.50%) [A]
+2026-02-05 14:47:18,217 - INFO -     #4: 26207 PANTALON FRESIA - $7,283,656 (2.35%) [A]
+2026-02-05 14:47:18,218 - INFO -     #5: 26203 PANTALON SILENE - $6,622,560 (2.14%) [A]
+2026-02-05 14:47:18,218 - INFO - 
+  PASO 3: Verificacion de consistencia...
+2026-02-05 14:47:18,221 - INFO -     SUM(dim_articulos.Venta_Neta_Total): $309,550,458.08
+2026-02-05 14:47:18,221 - INFO -     SUM(fact_ventas.Venta_Neta):         $309,550,458.08
+2026-02-05 14:47:18,221 - INFO -     Diferencia: $0.00
+2026-02-05 14:47:18,221 - INFO -     CONSISTENCIA: OK
+2026-02-05 14:47:18,221 - INFO - 
+  MODELO ESTRELLA (Star Schema):
+2026-02-05 14:47:18,222 - INFO -     dim_articulos: 454 filas
+2026-02-05 14:47:18,223 - INFO -     fact_ventas: 1301 filas
+2026-02-05 14:47:18,223 - INFO -     Integridad referencial: OK
+2026-02-05 14:47:18,223 - INFO - 
+============================================================
+2026-02-05 14:47:18,224 - INFO - FASE 5: CARGA - MODELO ESTRELLA (Star Schema)
+2026-02-05 14:47:18,224 - INFO - ============================================================
+2026-02-05 14:47:18,224 - INFO - 
+  Formato CSV: Excel-Spanish (sep=';', decimal=',')
+2026-02-05 14:47:18,235 - INFO - 
+  DIMENSION: dim_articulos.csv
+2026-02-05 14:47:18,235 - INFO -     Filas: 454
+2026-02-05 14:47:18,235 - INFO -     Columnas: ['Articulo', 'Descripcion', 'Ranking', 'Clasificacion_ABC', 'Venta_Neta_Total', 'Venta_Bruta_Total', 'Venta_Devolucion_Total', 'Tasa_Devolucion', 'Porcentaje_Articulo_Global', 'Porcentaje_Acumulado']
+2026-02-05 14:47:18,235 - INFO -     Clave primaria: Articulo
+2026-02-05 14:47:18,238 - INFO - 
+  DIMENSION: dim_sucursales.csv
+2026-02-05 14:47:18,238 - INFO -     Filas: 9
+2026-02-05 14:47:18,238 - INFO -     Columnas: ['Sucursal', 'Tipo']
+2026-02-05 14:47:18,239 - INFO -     Clave primaria: Sucursal
+2026-02-05 14:47:18,248 - INFO - 
+  HECHOS: fact_ventas.csv
+2026-02-05 14:47:18,248 - INFO -     Filas: 1301
+2026-02-05 14:47:18,248 - INFO -     Columnas: ['Articulo', 'Sucursal', 'Venta_Neta', 'Venta_Bruta', 'Venta_Devolucion', 'Cantidad']
+2026-02-05 14:47:18,248 - INFO -     Claves foraneas:
+2026-02-05 14:47:18,248 - INFO -       - Articulo -> dim_articulos
+2026-02-05 14:47:18,249 - INFO -       - Sucursal -> dim_sucursales
+2026-02-05 14:47:18,249 - INFO - 
+  RELACIONES EN POWER BI:
+2026-02-05 14:47:18,249 - INFO -   fact_ventas[Articulo] ---> dim_articulos[Articulo]
+2026-02-05 14:47:18,249 - INFO -   fact_ventas[Sucursal] ---> dim_sucursales[Sucursal]
+2026-02-05 14:47:18,249 - INFO -   (Muchos a Uno, direccion: Ambas)
+2026-02-05 14:47:18,249 - INFO - 
+############################################################
+2026-02-05 14:47:18,249 - INFO - PIPELINE COMPLETADO EXITOSAMENTE
+2026-02-05 14:47:18,249 - INFO - Archivos generados (formato Excel-Spanish):
+2026-02-05 14:47:18,250 - INFO -   - dim_articulos.csv (Dimension Articulos)
+2026-02-05 14:47:18,250 - INFO -   - dim_sucursales.csv (Dimension Sucursales)
+2026-02-05 14:47:18,250 - INFO -   - fact_ventas.csv (Tabla de Hechos)
+2026-02-05 14:47:18,250 - INFO - ############################################################

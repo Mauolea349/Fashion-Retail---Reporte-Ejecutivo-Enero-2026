@@ -1,0 +1,30 @@
+# === Datos Sensibles y Pesados ===
+# Ignoramos toda la carpeta de datos para proteger la privacidad de la empresa
+data/raw/
+data/processed/
+*.csv
+*.xlsx
+*.xls
+
+# === Power BI ===
+# Ignoramos archivos temporales de Power BI
+*.pbit
+*.pbix.temp
+*.pbix.copy
+
+# === Python ===
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+ENV/
+.env
+
+# === Jupyter Notebooks ===
+.ipynb_checkpoints
+*/.ipynb_checkpoints/*
+
+# === Sistema Operativo ===
+.DS_Store
+Thumbs.db
