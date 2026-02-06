@@ -1,7 +1,0 @@
-{
-  "permissions": {
-    "allow": [
-      "Bash(python scripts/data_cleaning.py:*)"
-    ]
-  }
-}

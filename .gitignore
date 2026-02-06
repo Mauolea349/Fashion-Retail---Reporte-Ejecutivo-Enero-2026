@@ -1,3 +1,10 @@
+# === IDEs y Herramientas de IA ===
+.vscode/
+.idea/
+.claude/
+claude_code/
+.cursor/
+
 # === Datos Sensibles y Pesados ===
 # Ignoramos toda la carpeta de datos para proteger la privacidad de la empresa
 data/raw/
